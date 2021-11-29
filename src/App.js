@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Portfolio from './components/Portfolios';
 import Login from './components/Login';
 import Register from './components/Register';
+import Details from './components/Details';
 function App() {
    
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/portfolios" element={<Portfolio />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/details" element={<Details />} />
       </Routes>
 
       <Footer />

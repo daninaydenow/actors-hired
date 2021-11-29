@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import PortfolioCard from "../PortfolioCard";
+import PortfolioCard from "./PortfolioCard";
 import styles from './Portfolios.module.css';
 const Portfolios = () => {
 

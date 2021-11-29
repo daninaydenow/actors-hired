@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './PortfolioCard.module.css'
 
 const PortfolioCard = ({
@@ -10,7 +11,7 @@ const PortfolioCard = ({
                 <img src={imageUrl} className={`${styles.imgsize} card-img-top`} alt="..."/>
                 <div className ="card-body">
                 <h5 className ="card-title">{name}</h5>
-                <a href="#" className ="btn btn-warning">Check Profile</a>
+                <Link to="/details" className ="btn btn-warning">Check Profile</Link>
                 </div>
             </div>
             
