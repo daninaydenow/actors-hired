@@ -1,0 +1,13 @@
+.style {
+    color: white;
+    border-color:gold; 
+    background-color: #282c34;
+    margin: 10px;
+    padding: 5px;
+    width: 15%;
+    height: 10%;
+}
+
+.imgsize {
+    height: 300px;
+}
