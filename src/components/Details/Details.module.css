@@ -1,0 +1,40 @@
+
+.flex {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+}
+
+ .style {
+    color: white;
+    border-color:gold; 
+    background-color: #282c34;
+    margin: 10px;
+    padding: 5px;
+    height: 550px;
+    /* width: 90%; */
+}
+
+ .imgsize {
+    height: 200px;
+    
+} 
+
+.btnspacing {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.border {
+    /* border: 1px solid gold; */
+    background-color: rgb(255, 255,255, 0.02);
+    /* border-radius: 3px; */
+}
+
+.general{
+    height: 100px;
+}
+
+
+
