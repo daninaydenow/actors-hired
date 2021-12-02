@@ -11,35 +11,48 @@ const Details = ({
                 <div className={`col-3 ps-3 pe-3`}>
                     <div className={`h-100`}>
                         <div className={` ${styles.border} ${styles.imgsize} text-center mb-2`}>
-                            <img src="actor-three.jpg" alt="kurec goshevski" className="img-fluid h-100" />
+                            <img src="veselin-kalanovski-profile.jpg" alt="img" className="img-fluid h-100" />
                         </div>
                         <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
-                            <h5>Actors name</h5>
+                            <h5>Actors name:</h5>
+                            <p>Veselin Kalanovski</p>
                         </div>
                         <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
-                            <h5>Genre</h5>
-                        </div>
-                        <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
-                            <h5>quick description</h5>
+                            <h5>Genre:</h5>
+                            <p>Drama, Comedy, Horror, Thriller</p>
                         </div>
                     </div>
                 </div>
                 <div className={`col-9 pe-3`}>
                     <div className={`h-100`}>
-                        <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
-                            <h4>Theater Experience</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore ullam, consectetur dicta sequi minima rem quis architecto temporibus quaerat, maxime molestiae! Quaerat accusantium voluptas dolorem maxime corporis quibusdam, eveniet excepturi.</p>
+                        <div className={` ${styles.border} ps-2 pt-2 h-50 mb-2 text-center`}>
+                            <div className={styles.imgboxone}>
+                                  <img src="veselin-kalanovski-main.jpg" alt="img" className={`${styles.border} img-fluid h-100`} />
+                            </div>
+                            <div className={styles.imgboxtwo}>
+                            <img src="veseiln-kalanovski-second.jpg" alt="img" className="img-fluid h-100" />
+                            </div>
+                            <div className={styles.imgboxthree}>
+                            <img src="veselin-kalanovski-scene.jpg" alt="img" className="img-fluid h-100" />
+                            </div>
                         </div>
                         <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
-                            <h4>Cinema Experience</h4>
+                            <h4>Experience:</h4>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa, quis provident. Necessitatibus dignissimos iste vero voluptatum dolore consectetur aliquam quaerat placeat labore eum blanditiis, voluptates odit sequi, voluptatem eius natus?</p>
                         </div>
-                        <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
-                            <h4>Full description</h4>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt animi velit exercitationem voluptatem a doloremque enim, libero, veniam illum quos maiores possimus quod quo commodi culpa aliquid, eius explicabo molestias!</p>
-                        </div>
-                        <div className={` text-center mt-5`}>
-                            <Link to="/home" className={`btn btn-warning`}>Hire Actor!</Link>
+                        <div>
+                            <div className={`${styles.box} text-center`}>
+                            <Link to="/home" className={`btn btn-warning mt-5`}>Hire Actor!</Link>
+                            </div>
+                            <div className={`${styles.boxtwo} text-center`}>
+                                 <button className={'btn btn-warning mt-5 me-2'}>Edit</button>
+                                 <button className={'btn btn-danger mt-5 me-2'}>Delete</button>
+                            </div>
+                            <div className={`${styles.boxthree} text-center`}>
+                                  <button className={'btn btn-primary mt-5'}>Like</button>
+                                  <span className={'ms-3'}>Likes: 0</span>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
