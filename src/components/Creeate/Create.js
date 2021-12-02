@@ -7,6 +7,7 @@ const Create = () => {
                     <div className={`col-3 ps-3 pe-3`}>
                         <div className={`h-100`}>
                             <div className={` ${styles.border} ${styles.imgsize} text-center mb-2`}>
+                                <h2 className="mb-5">Create Portfolio</h2>
                                 <label htmlFor="profileImg" className="mt-4"> Profile Image Url</label>
                                 <input type="text" name="profileImg" className="form-control" />
                             </div>
