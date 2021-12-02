@@ -25,15 +25,15 @@ const Create = () => {
                         <div className={`h-100`}>
                             <div className={` ${styles.border}  ps-2 pt-2 h-50 mb-2`}>
                                 <div className={`${styles.imgUrl}`}>
-                                    <label htmlFor="imgOne" className="ps-2 pe-4 ">Image One Url</label>
+                                    <label htmlFor="imgOne">Image One Url</label>
                                     <input type="text" name="imgOne" className="form-control" />
                                 </div>
                                 <div className={`${styles.imgUrl} mt-3`}>
-                                    <label htmlFor="imgTwo" className="ps-2 pe-4 ">Image Two Url</label>
+                                    <label htmlFor="imgTwo">Image Two Url</label>
                                     <input type="text" name="imgTwo" className="form-control" />
                                 </div>
                                 <div className={`${styles.imgUrl} mt-3`}>
-                                    <label htmlFor="imgThree" className="ps-2 pe-3 ">Image Three Url</label>
+                                    <label htmlFor="imgThree">Image Three Url</label>
                                     <input type="text" name="imgThree" className="form-control" />
                                 </div>
                             </div>
