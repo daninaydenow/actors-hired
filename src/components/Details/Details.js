@@ -45,12 +45,12 @@ const Details = ({
                             <Link to="/home" className={`btn btn-warning mt-5`}>Hire Actor!</Link>
                             </div>
                             <div className={`${styles.boxtwo} text-center`}>
-                                 <button className={'btn btn-warning mt-5 me-2'}>Edit</button>
+                                 <Link to="/edit" className={'btn btn-warning mt-5 me-2'}>Edit</Link>
                                  <button className={'btn btn-danger mt-5 me-2'}>Delete</button>
                             </div>
                             <div className={`${styles.boxthree} text-center`}>
                                   <button className={'btn btn-primary mt-5'}>Like</button>
-                                  <span className={'ms-3'}>Likes: 0</span>
+                                  <span className={'ms-3 '}>Likes: 0</span>
                             </div>
                             
                         </div>

@@ -5,6 +5,7 @@ const Portfolios = () => {
 
   return (
     <>
+      <h1 className={styles.heading}>Browse Portfolios</h1>
       <div className={styles.flex}>
         <PortfolioCard imageUrl="actor-one.jpg" name="Ashley Cooper" />
         <PortfolioCard imageUrl="actor-two.jpg" name="Timothy Sampson" />

@@ -34,6 +34,7 @@ const Navbar = () => {
         <div className="container-fluid">
           <Link className="navbar-brand" to="/home">
             <img src="logo-color.svg" alt="" width="40" height="40" />
+            <span className="ps-3">Actors Hired</span>
           </Link>
           <div>
             <ul className="navbar-nav">
