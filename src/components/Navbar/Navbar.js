@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import './Navbar.css'
 const Navbar = () => {
-  const isLoggedIn = false;
+  const {user} = useContext(AuthContext);
 
-  const user = (
+  const userNavigation = (
     <>
       <li className="nav-item">
         <Link className="nav-link" to="/create">Create Portfolio</Link>
@@ -16,7 +18,7 @@ const Navbar = () => {
       </li>
     </>)
 
-  const guest = (
+  const guestNavigation = (
     <>
       <li className="nav-item">
         <Link to="/login" className="btn btn-warning">Login</Link>
@@ -44,9 +46,9 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/portfolios">Portfolios</Link>
               </li>
-              {isLoggedIn
-                ? user
-                : guest}
+              {user
+                ? userNavigation
+                : guestNavigation}
             </ul>
           </div>
         </div>

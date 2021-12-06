@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router';
+import useLocalStorage from './hooks/useLocalStorage';
+import { AuthContext } from './contexts/AuthContext';
 import './App.css'
 
 import Navbar from './components/Navbar';
@@ -10,13 +12,30 @@ import Register from './components/Register';
 import Details from './components/Details';
 import Create from './components/Creeate/Create';
 import Edit from './components/Edit/Edit';
-function App() {
 
-   
+
+const initialAuthState = {
+  _id: '',
+  email: '',
+  accessToken: ''
+}
+
+function App() {
+    const [user, setUser] = useLocalStorage("user", initialAuthState);
+
+    const login = (authData) => {
+        setUser(authData);
+    }
+
+    const logout = () => {
+      setUser(initialAuthState);
+    }
+
   return (
+    <AuthContext.Provider value={{user, login, logout}} >
     <div className="App">
       <Navbar />
-
+     
       <Routes>
         <Route path="/:actorId/details"  element={<Details />} />
         <Route path="/" element={<Home />} />
@@ -30,6 +49,7 @@ function App() {
 
       <Footer />
     </div>
+    </AuthContext.Provider>
   );
 }
 
