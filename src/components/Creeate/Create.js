@@ -1,7 +1,22 @@
+import { useNavigate } from 'react-router';
+import * as actorService from '../../services/actorService';
 import styles from './Create.module.css'
 const Create = () => {
+    const navigate = useNavigate();
+    
+    const createHandler = (e) => {
+        e.preventDefault();
+        const {profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience} = Object.fromEntries(new FormData(e.currentTarget));
+        // TODO: validate fields
+        actorService.create({profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience})
+        .then(res => {
+           console.log(res);
+           navigate('/portfolios');
+        })
+    }
+
     return (
-        <form id="create-form" method="POST">
+        <form method="POST" onSubmit={createHandler}>
             <div className={`card  ${styles.style}`}>
                 <div className="row h-100 text-start">
                     <div className={`col-3 ps-3 pe-3`}>
@@ -39,7 +54,7 @@ const Create = () => {
                             </div>
                             <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
                                 <h4>Experience:</h4>
-                                <textarea className="form-control" rows="5"></textarea>
+                                <textarea className="form-control" rows="5" name="experience"></textarea>
                             </div>
                             <div className="text-center">
                                 <button className={'btn btn-warning mt-5'}>Create Portfolio</button>
