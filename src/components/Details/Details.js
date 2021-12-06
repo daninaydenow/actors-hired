@@ -1,9 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import * as actorService from '../../services/actorService';
 import styles from './Details.module.css';
-const Details = ({
+const Details = () => {
+    const [actor, setActor] = useState({});
+    const {actorId} = useParams();
 
-}) => {
+    useEffect(() => {
+       
+            actorService.getOne(actorId)
+            .then(res => {
+                
+                setActor(res);
+            });
+        
+    }, []);
+
+    console.log(actor)
+    
     return (
 
         <div className={`card  ${styles.style}`}>
@@ -11,15 +25,15 @@ const Details = ({
                 <div className={`col-3 ps-3 pe-3`}>
                     <div className={`h-100`}>
                         <div className={` ${styles.border} ${styles.imgsize} text-center mb-2`}>
-                            <img src="veselin-kalanovski-profile.jpg" alt="img" className="img-fluid h-100" />
+                            <img src={actor.profImgUrl} alt="img" className="img-fluid h-100" />
                         </div>
                         <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
-                            <h5>Actors name:</h5>
-                            <p>Veselin Kalanovski</p>
+                            <h5>Actors name: </h5>
+                            <p>{actor.name}</p>
                         </div>
                         <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
                             <h5>Genre:</h5>
-                            <p>Drama, Comedy, Horror, Thriller</p>
+                            <p>{actor.genre}</p>
                         </div>
                     </div>
                 </div>
@@ -27,18 +41,18 @@ const Details = ({
                     <div className={`h-100`}>
                         <div className={` ${styles.border} ps-2 pt-2 h-50 mb-2 text-center`}>
                             <div className={styles.imgboxone}>
-                                  <img src="veselin-kalanovski-main.jpg" alt="img" className={`${styles.border} img-fluid h-100`} />
+                                  <img src={actor.imgOneUrl} alt="img" className={`${styles.border} img-fluid h-100`} />
                             </div>
                             <div className={styles.imgboxtwo}>
-                            <img src="veseiln-kalanovski-second.jpg" alt="img" className="img-fluid h-100" />
+                            <img src={actor.imgTwoUrl} alt="img" className="img-fluid h-100" />
                             </div>
                             <div className={styles.imgboxthree}>
-                            <img src="veselin-kalanovski-scene.jpg" alt="img" className="img-fluid h-100" />
+                            <img src={actor.imgThreeUrl} alt="img" className="img-fluid h-100" />
                             </div>
                         </div>
                         <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
                             <h4>Experience:</h4>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa, quis provident. Necessitatibus dignissimos iste vero voluptatum dolore consectetur aliquam quaerat placeat labore eum blanditiis, voluptates odit sequi, voluptatem eius natus?</p>
+                            <p>{actor.experience}</p>
                         </div>
                         <div>
                             <div className={`${styles.box} text-center`}>

@@ -17,12 +17,12 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/:actorId/details"  element={<Details />} />
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/portfolios" element={<Portfolio />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/details" element={<Details />} />
         <Route path="/create" element={<Create />} />
         <Route path="/edit" element={<Edit />} />
       </Routes>

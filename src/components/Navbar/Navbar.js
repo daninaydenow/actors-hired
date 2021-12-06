@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import './Navbar.css'
 const Navbar = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   const user = (
     <>

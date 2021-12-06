@@ -1,10 +1,21 @@
 import { Link } from 'react-router-dom';
-import styles from './Login.module.css'
+import * as authService from "../../services/authService";
+import styles from './Login.module.css';
 const Login = () => {
+
+  const loginHandler = (e) => {
+      e.preventDefault();
+      const {email, password} = Object.fromEntries(new FormData(e.currentTarget));
+      authService.login(email, password)
+      .then(res => {
+        console.log(res);
+      })
+  }
+
   return (
     <>
-      <section id="login-page" className={styles.form}>
-        <form className="card-body" method="POST">
+      <section className={styles.form}>
+        <form className="card-body" method="POST" onSubmit={loginHandler}>
           <div className={styles.container}>
             <legend>Login</legend>
             <div className={`${styles.row} + mb-3 row`}>
