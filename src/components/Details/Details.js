@@ -66,7 +66,8 @@ const Details = () => {
                             </div>
                             <div className={`${styles.boxthree} text-center`}>
                                   <button className={'btn btn-primary mt-5'}>Like</button>
-                                  <span className={'ms-3 '}>Likes: 0</span>
+                                  <div className={'btn btn-primary mt-5'}>Likes: </div>
+                                  
                             </div>
                             
                         </div>

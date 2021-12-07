@@ -45,7 +45,6 @@ function App() {
         <Route path="/logout" element={<Logout />}/>
         <Route path="/portfolios" element={<Portfolio />} />
         <Route path="/create" element={<Create />} />
-        <Route path="/edit" element={<Edit />} />
         <Route path="/:actorId/details"  element={<Details />} />
       </Routes>
 

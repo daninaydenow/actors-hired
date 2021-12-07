@@ -3,7 +3,7 @@ import { requester } from "../api/requester";
 const endPoint = '/data/actors';
 
 export const create = (actorData, user) => {
-    return requester(endPoint, "POST", actorData, user);
+    return requester(endPoint, "POST", actorData, user)
 }
 
 export const getAll = () => {
