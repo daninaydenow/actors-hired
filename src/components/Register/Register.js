@@ -16,6 +16,12 @@ const Register = () => {
             //  TODO:  Show error notification
           }
 
+          authService.register(email, password)
+          .then(userData => {
+              login(userData);
+              navigate('/')
+          })
+
      }
 
     return (
