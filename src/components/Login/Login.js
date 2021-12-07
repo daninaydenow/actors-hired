@@ -6,16 +6,18 @@ import * as authService from "../../services/authService";
 import styles from './Login.module.css';
 
 const Login = () => {
-   const {login} = useContext(AuthContext);
-   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const loginHandler = (e) => {
-      e.preventDefault();
-      const {email, password} = Object.fromEntries(new FormData(e.currentTarget));
-      authService.login(email, password)
+    e.preventDefault();
+
+    const { email, password } = Object.fromEntries(new FormData(e.currentTarget));
+
+    authService.login(email, password)
       .then(userData => {
-         login(userData);
-         navigate('/');
+        login(userData);
+        navigate('/');
       })
       .catch(err => {
         // TODO: show notification;
