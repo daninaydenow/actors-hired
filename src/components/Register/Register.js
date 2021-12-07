@@ -1,10 +1,26 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
+import * as authService from '../../services/authService';
 import styles from './Register.module.css';
 
 const Register = () => {
+     const navigate = useNavigate();
+     const {login} = useContext(AuthContext);
+ 
+     const registerHandler = (e) => {
+          e.preventDefault();
+
+          const {email, password, rePassword} = Object.fromEntries(new FormData(e.currentTarget));
+          if(password !== rePassword) {
+            //  TODO:  Show error notification
+          }
+
+     }
+
     return (
         <section id="register-page" className={styles.form}>
-            <form className="card-body" method="POST">
+            <form className="card-body" method="POST" onSubmit={registerHandler}>
                 <div className={styles.container}>
                     <legend>Register</legend>
                     <div className={`${styles.row} + mb-3 row`}>
