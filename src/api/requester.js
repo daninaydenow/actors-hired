@@ -17,6 +17,7 @@ export const requester = (endpoint, method, body, user) => {
         }
         if (body !== undefined) {
             options.body = JSON.stringify(body);
+            console.log(body);
         }
         let resultUrl = baseUrl + endpoint;
 

@@ -1,14 +1,17 @@
 import { useNavigate } from 'react-router';
+import { useContext } from 'react/cjs/react.development';
+import { AuthContext } from '../../contexts/AuthContext';
 import * as actorService from '../../services/actorService';
 import styles from './Create.module.css'
 const Create = () => {
     const navigate = useNavigate();
+    const {user} = useContext(AuthContext);
     
     const createHandler = (e) => {
         e.preventDefault();
         const {profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience} = Object.fromEntries(new FormData(e.currentTarget));
         // TODO: validate fields
-        actorService.create({profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience})
+        actorService.create({profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience, likes:[]}, user)
         .then(res => {
            console.log(res);
            navigate('/portfolios');
@@ -23,8 +26,8 @@ const Create = () => {
                         <div className={`h-100`}>
                             <div className={` ${styles.border} ${styles.imgsize} text-center mb-2`}>
                                 <h2 className="mb-5">Create Portfolio</h2>
-                                <label htmlFor="profileImg" className="mt-4"> Profile Image Url</label>
-                                <input type="text" name="profileImg" className="form-control" />
+                                <label htmlFor="profImgUrl" className="mt-4"> Profile Image Url</label>
+                                <input type="text" name="profImgUrl" className="form-control" />
                             </div>
                             <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
                                 <label htmlFor="name" className="ps-2 pe-4 mt-1">Name</label>
@@ -40,16 +43,16 @@ const Create = () => {
                         <div className={`h-100`}>
                             <div className={` ${styles.border}  ps-2 pt-2 h-50 mb-2`}>
                                 <div className={`${styles.imgUrl}`}>
-                                    <label htmlFor="imgOne">Image 1 Url</label>
-                                    <input type="text" name="imgOne" className="form-control" />
+                                    <label htmlFor="imgOneUrl">Image 1 Url</label>
+                                    <input type="text" name="imgOneUrl" className="form-control" />
                                 </div>
                                 <div className={`${styles.imgUrl} mt-3`}>
-                                    <label htmlFor="imgTwo">Image 2 Url</label>
-                                    <input type="text" name="imgTwo" className="form-control" />
+                                    <label htmlFor="imgTwoUrl">Image 2 Url</label>
+                                    <input type="text" name="imgTwoUrl" className="form-control" />
                                 </div>
                                 <div className={`${styles.imgUrl} mt-3`}>
-                                    <label htmlFor="imgThree">Image 3 Url</label>
-                                    <input type="text" name="imgThree" className="form-control" />
+                                    <label htmlFor="imgThreeUrl">Image 3 Url</label>
+                                    <input type="text" name="imgThreeUrl" className="form-control" />
                                 </div>
                             </div>
                             <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>

@@ -1,22 +1,17 @@
-const baseUrl = 'http://localhost:3030/data'
+import { requester } from "../api/requester";
 
-export const create = (actorData) => {
-    return fetch(`${baseUrl}/actors`, {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json",
-            "X-Authorization": "ea6ac2d1e286087c146ac97c8e900c6c3ca18ee15a9af1f1c9cdda6eda3f0d1f"
-        },
-        body: JSON.stringify(actorData)
-    });
+const endPoint = '/data/actors';
+
+export const create = (actorData, user) => {
+    return requester(endPoint, "POST", actorData, user);
 }
 
 export const getAll = () => {
-    return fetch(`${baseUrl}/actors`)
+    return requester(endPoint, "GET", undefined, undefined)
         .then(res => res.json())
 };
 
 export const getOne = (actorId) => {
-    return fetch(`${baseUrl}/actors/${actorId}`)
+    return requester(`${endPoint}/${actorId}`)
         .then(res => res.json())
 };
