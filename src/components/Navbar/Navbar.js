@@ -46,7 +46,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/portfolios">Portfolios</Link>
               </li>
-              {user
+              {user.accessToken !== ''
                 ? userNavigation
                 : guestNavigation}
             </ul>
