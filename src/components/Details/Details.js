@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import * as actorService from '../../services/actorService';
 import styles from './Details.module.css';
+
 const Details = () => {
+
     const [actor, setActor] = useState({});
     const {actorId} = useParams();
 
     useEffect(() => {
-       
+            
             actorService.getOne(actorId)
             .then(res => {
                 
@@ -59,7 +61,7 @@ const Details = () => {
                             <Link to="/home" className={`btn btn-warning mt-5`}>Hire Actor!</Link>
                             </div>
                             <div className={`${styles.boxtwo} text-center`}>
-                                 <Link to="/edit" className={'btn btn-warning mt-5 me-2'}>Edit</Link>
+                                 <Link to={`${actorId}/edit`} className={'btn btn-warning mt-5 me-2'}>Edit</Link>
                                  <button className={'btn btn-danger mt-5 me-2'}>Delete</button>
                             </div>
                             <div className={`${styles.boxthree} text-center`}>
