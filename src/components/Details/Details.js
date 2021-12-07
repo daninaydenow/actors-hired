@@ -14,7 +14,7 @@ const Details = () => {
                 setActor(res);
             });
         
-    }, []);
+    }, [actorId]);
 
     console.log(actor)
     
@@ -78,24 +78,3 @@ const Details = () => {
     )
 }
 export default Details;
-
-{/* <img src="actor-one.jpg" className={`${styles.imgsize} card-img-top`} alt="..." />
-                <div className="card-body">
-                    <h5 className={`${styles.flex} card-title`}><strong>Name:</strong> Ashley Cooper</h5>
-                    <p className=""><strong>Personal quote:</strong> "Live you're best as if you'd die tommorow"</p>
-
-
-                    <div id="button-wrap" className={`${styles.flex}`}>
-                        <div>
-                            <a href="#" className={`${styles.btnspacing} btn btn-warning`}>Hire</a>
-                        </div>
-                        <div>
-                            <a href="#" className={`${styles.btnspacing} btn btn-primary`}>Edit</a>
-                        </div>
-                        <div>
-                            <a href="#" className={`${styles.btnspacing} btn btn-danger`}>Delete</a>
-                        </div>
-                    </div>
-
-
-                </div> */}

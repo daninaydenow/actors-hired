@@ -12,6 +12,7 @@ import Register from './components/Register';
 import Details from './components/Details';
 import Create from './components/Creeate/Create';
 import Edit from './components/Edit/Edit';
+import Logout from './components/Logout/Logout';
 
 
 const initialAuthState = {
@@ -37,14 +38,15 @@ function App() {
       <Navbar />
      
       <Routes>
-        <Route path="/:actorId/details"  element={<Details />} />
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/portfolios" element={<Portfolio />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />}/>
+        <Route path="/portfolios" element={<Portfolio />} />
         <Route path="/create" element={<Create />} />
         <Route path="/edit" element={<Edit />} />
+        <Route path="/:actorId/details"  element={<Details />} />
       </Routes>
 
       <Footer />

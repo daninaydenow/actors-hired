@@ -12,3 +12,8 @@ export const register = (email, password) => {
     return requester(endPoint, "POST", {email, password}, null)
         .then(res => res.json());
 }
+
+export const logout = (user) => {
+    const endPoint = '/users/logout';
+    return requester(endPoint, "GET", undefined, user)
+}
