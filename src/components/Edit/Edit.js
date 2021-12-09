@@ -6,25 +6,23 @@ import styles from './Edit.module.css'
 const Edit = () => {
     const navigate = useNavigate();
     const [actor, setActor] = useState({});
-    const {actorId} = useParams();
-    const {user} = useContext(AuthContext);
+    const { actorId } = useParams();
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         actorService.getOne(actorId)
-        .then(res => {
-            console.log(res);
-            setActor(res);
-        });
+            .then(res => {
+                setActor(res);
+            });
     }, [actorId]);
 
     const editPortfolioHandler = (e) => {
         e.preventDefault();
-        let {profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience} = Object.fromEntries(new FormData(e.currentTarget));
-        actorService.update(user, actorId, {profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience})
-        .then(res => {
-            console.log(res);
-            navigate(`/details/${actorId}`);
-        })
+        let { profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience } = Object.fromEntries(new FormData(e.currentTarget));
+        actorService.update(user, actorId, { profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience })
+            .then(res => {
+                navigate(`/details/${actorId}`);
+            });
     }
 
     return (
@@ -36,15 +34,15 @@ const Edit = () => {
                             <div className={` ${styles.border} ${styles.imgsize} text-center mb-2`}>
                                 <h2 className="mb-5">Edit Portfolio</h2>
                                 <label htmlFor="profImgUrl" className="mt-4"> Profile Image Url</label>
-                                <input type="text" name="profImgUrl" className="form-control" defaultValue={actor.profImgUrl}/>
+                                <input type="text" name="profImgUrl" className="form-control" defaultValue={actor.profImgUrl} />
                             </div>
                             <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
                                 <label htmlFor="name" className="ps-2 pe-4 mt-1">Name</label>
-                                <input type="text" name="name" className="form-control" defaultValue={actor.name}/>
+                                <input type="text" name="name" className="form-control" defaultValue={actor.name} />
                             </div>
                             <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
                                 <label htmlFor="genre" className="ps-2 pe-4 mt-1">Genre</label>
-                                <input type="text" name="genre" className="form-control" defaultValue={actor.genre}/>
+                                <input type="text" name="genre" className="form-control" defaultValue={actor.genre} />
                             </div>
                         </div>
                     </div>
@@ -57,7 +55,7 @@ const Edit = () => {
                                 </div>
                                 <div className={`${styles.imgUrl} mt-3`}>
                                     <label htmlFor="imgTwoUrl">Image 2 Url</label>
-                                    <input type="text" name="imgTwoUrl" className="form-control" defaultValue={actor.imgTwoUrl}/>
+                                    <input type="text" name="imgTwoUrl" className="form-control" defaultValue={actor.imgTwoUrl} />
                                 </div>
                                 <div className={`${styles.imgUrl} mt-3`}>
                                     <label htmlFor="imgThreeUrl">Image 3 Url</label>
