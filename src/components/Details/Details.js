@@ -14,7 +14,6 @@ const Details = () => {
 
         actorService.getOne(actorId)
             .then(res => {
-                console.log(res);
                 setActor(res);
             });
 
@@ -76,7 +75,7 @@ const Details = () => {
                             <p>{actor.experience}</p>
                         </div>
                         <div>
-                            
+
                             {user._id !== ''
                                 ? user._id === actor._ownerId
                                     ? ownerButtons
