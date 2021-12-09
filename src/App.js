@@ -45,7 +45,8 @@ function App() {
         <Route path="/logout" element={<Logout />}/>
         <Route path="/portfolios" element={<Portfolio />} />
         <Route path="/create" element={<Create />} />
-        <Route path="/:actorId/details"  element={<Details />} />
+        <Route path="/details/:actorId"  element={<Details />} />
+        <Route path="/edit/:actorId"  element={<Edit />} />
       </Routes>
 
       <Footer />

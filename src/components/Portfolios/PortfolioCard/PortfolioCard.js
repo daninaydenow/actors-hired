@@ -12,7 +12,7 @@ const PortfolioCard = ({
                 <img src={profImgUrl} className={`${styles.imgsize} card-img-top`} alt="..."/>
                 <div className ="card-body">
                 <h5 className ="card-title">{name}</h5>
-                <Link to={`/${actorId}/details`} className ="btn btn-warning">Check Profile</Link>
+                <Link to={`/details/${actorId}`} className ="btn btn-warning">Check Profile</Link>
                 </div>
             </div>
             
