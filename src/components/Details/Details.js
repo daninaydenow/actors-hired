@@ -29,13 +29,13 @@ const Details = () => {
 
     const userButtons = (
         <>
-        <div className={`${styles.box} text-center`}>
-             <Link to="/home" className={`btn btn-warning mt-5`}>Hire Actor!</Link>
-        </div>
-        <div className={`${styles.boxthree} text-center`}>
-            <button className={'btn btn-primary mt-5'}>Like</button>
-            <div className={'btn btn-primary mt-5'}>Likes: </div>
-        </div>
+            <div className={`${styles.box} text-center`}>
+                <Link to="/home" className={`btn btn-warning mt-5`}>Hire Actor!</Link>
+            </div>
+            <div className={`${styles.boxthree} text-center`}>
+                <button className={'btn btn-primary mt-5'}>Like</button>
+                <div className={'btn btn-primary mt-5'}>Likes: </div>
+            </div>
         </>
     )
 
@@ -76,10 +76,12 @@ const Details = () => {
                             <p>{actor.experience}</p>
                         </div>
                         <div>
-                            {user._id === actor._ownerId
-                                ? ownerButtons
-                                : userButtons}
-
+                            
+                            {user._id !== ''
+                                ? user._id === actor._ownerId
+                                    ? ownerButtons
+                                    : userButtons
+                                : ''}
 
                         </div>
                     </div>
