@@ -1,25 +1,44 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useContext } from 'react/cjs/react.development';
+import { AuthContext } from '../../contexts/AuthContext';
 import * as actorService from '../../services/actorService';
 import styles from './Details.module.css';
 
 const Details = () => {
-
+    const { user } = useContext(AuthContext);
     const [actor, setActor] = useState({});
-    const {actorId} = useParams();
+    const { actorId } = useParams();
 
     useEffect(() => {
-            
-            actorService.getOne(actorId)
+
+        actorService.getOne(actorId)
             .then(res => {
-                
+                console.log(res);
                 setActor(res);
             });
-        
+
     }, [actorId]);
 
-    console.log(actor)
-    
+    const ownerButtons = (
+        <div className={`${styles.boxtwo} text-center`}>
+            <Link to={`/edit/${actorId}`} className={'btn btn-warning mt-5 me-2'}>Edit</Link>
+            <button className={'btn btn-danger mt-5 me-2'}>Delete</button>
+        </div>
+    )
+
+    const userButtons = (
+        <>
+        <div className={`${styles.box} text-center`}>
+             <Link to="/home" className={`btn btn-warning mt-5`}>Hire Actor!</Link>
+        </div>
+        <div className={`${styles.boxthree} text-center`}>
+            <button className={'btn btn-primary mt-5'}>Like</button>
+            <div className={'btn btn-primary mt-5'}>Likes: </div>
+        </div>
+        </>
+    )
+
     return (
 
         <div className={`card  ${styles.style}`}>
@@ -43,13 +62,13 @@ const Details = () => {
                     <div className={`h-100`}>
                         <div className={` ${styles.border} ps-2 pt-2 h-50 mb-2 text-center`}>
                             <div className={styles.imgboxone}>
-                                  <img src={actor.imgOneUrl} alt="img" className={`${styles.border} img-fluid h-100`} />
+                                <img src={actor.imgOneUrl} alt="img" className={`${styles.border} img-fluid h-100`} />
                             </div>
                             <div className={styles.imgboxtwo}>
-                            <img src={actor.imgTwoUrl} alt="img" className="img-fluid h-100" />
+                                <img src={actor.imgTwoUrl} alt="img" className="img-fluid h-100" />
                             </div>
                             <div className={styles.imgboxthree}>
-                            <img src={actor.imgThreeUrl} alt="img" className="img-fluid h-100" />
+                                <img src={actor.imgThreeUrl} alt="img" className="img-fluid h-100" />
                             </div>
                         </div>
                         <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
@@ -57,19 +76,11 @@ const Details = () => {
                             <p>{actor.experience}</p>
                         </div>
                         <div>
-                            <div className={`${styles.box} text-center`}>
-                            <Link to="/home" className={`btn btn-warning mt-5`}>Hire Actor!</Link>
-                            </div>
-                            <div className={`${styles.boxtwo} text-center`}>
-                                 <Link to={`/edit/${actorId}`} className={'btn btn-warning mt-5 me-2'}>Edit</Link>
-                                 <button className={'btn btn-danger mt-5 me-2'}>Delete</button>
-                            </div>
-                            <div className={`${styles.boxthree} text-center`}>
-                                  <button className={'btn btn-primary mt-5'}>Like</button>
-                                  <div className={'btn btn-primary mt-5'}>Likes: </div>
-                                  
-                            </div>
-                            
+                            {user._id === actor._ownerId
+                                ? ownerButtons
+                                : userButtons}
+
+
                         </div>
                     </div>
                 </div>
