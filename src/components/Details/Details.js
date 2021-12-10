@@ -5,8 +5,9 @@ import * as actorService from '../../services/actorService';
 import styles from './Details.module.css';
 
 const Details = () => {
-    const { currentUser } = useAuth();
     const [actor, setActor] = useState({});
+    const [loading, setLoading] = useState(false);
+    const { currentUser } = useAuth();
     const { actorId } = useParams();
 
     useEffect(() => {
