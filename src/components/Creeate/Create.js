@@ -7,12 +7,11 @@ const Create = () => {
     const {currentUser} = useAuth();
     
     const createPortfolioHandler = (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
         const {profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience} = Object.fromEntries(new FormData(e.currentTarget));
         // TODO: validate fields
         actorService.create({profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience, likes:[], _ownerId: currentUser.uid })
         .then(res => {
-           console.log(res);
            navigate('/portfolios');
         })
     }
