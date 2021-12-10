@@ -6,6 +6,7 @@ const portfoliosCollectionRef = collection(db, 'portfolios');
 export const create = async (actorData) => {
     return await addDoc(portfoliosCollectionRef, actorData);
 }
+
 export const update = async (id, actorData) => {
     const userDocRef = doc(db, 'portfolios', id);
     return await updateDoc(userDocRef, actorData);
