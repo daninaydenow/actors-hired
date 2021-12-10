@@ -1,28 +1,28 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import * as actorService from '../../services/actorService';
-import { AuthContext } from "../../contexts/AuthContext";
+import {  useAuth } from "../../contexts/AuthContext";
 import styles from './Edit.module.css'
 const Edit = () => {
     const navigate = useNavigate();
     const [actor, setActor] = useState({});
     const { actorId } = useParams();
-    const { user } = useContext(AuthContext);
+    const { currentUser } = useAuth();
 
     useEffect(() => {
         actorService.getOne(actorId)
-            .then(res => {
-                setActor(res);
-            });
+        .then(snapshot => {
+            setActor(snapshot.data());
+        });
     }, [actorId]);
 
     const editPortfolioHandler = (e) => {
         e.preventDefault();
         let { profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience } = Object.fromEntries(new FormData(e.currentTarget));
-        actorService.update(user, actorId, { profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience })
-            .then(res => {
-                navigate(`/details/${actorId}`);
-            });
+        // actorService.update(currentUser, actorId, { profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience })
+        //     .then(res => {
+        //         navigate(`/details/${actorId}`);
+        //     });
     }
 
     return (

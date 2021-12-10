@@ -1,21 +1,21 @@
-import { requester } from "../api/requester";
+import {db} from '../firebase';
+import {collection, getDocs, addDoc, getDoc, doc} from 'firebase/firestore';
 
-const endPoint = '/data/actors';
+const portfoliosCollectionRef = collection(db, 'portfolios');
 
-export const create = (actorData, user) => {
-    return requester(endPoint, "POST", actorData, user)
+export const create = async (actorData) => {
+    return await addDoc(portfoliosCollectionRef, actorData);
 }
-export const update = (user, actorId, actorData) => {
-    const updateEndPoint = `${endPoint}/${actorId}`;
-    return requester(updateEndPoint, "PUT", actorData, user);
-} 
+// export const update = (user, actorId, actorData) => {
+//     const updateEndPoint = `${endPoint}/${actorId}`;
+//     return requester(updateEndPoint, "PUT", actorData, user);
+// } 
 
-export const getAll = () => {
-    return requester(endPoint, "GET", undefined, undefined)
-        .then(res => res.json())
+export const getAll = async () => {
+    return await getDocs(portfoliosCollectionRef);
 };
 
-export const getOne = (actorId) => {
-    return requester(`${endPoint}/${actorId}`)
-        .then(res => res.json())
+export const getOne = async (id) => {
+    const userDocRef = doc(db, 'portfolios', id);
+    return await getDoc(userDocRef);
 };

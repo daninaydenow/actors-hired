@@ -1,24 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useContext } from 'react/cjs/react.development';
-import { AuthContext } from '../../contexts/AuthContext';
+import {  useAuth } from '../../contexts/AuthContext';
 import * as actorService from '../../services/actorService';
 import styles from './Details.module.css';
 
 const Details = () => {
-    const { user } = useContext(AuthContext);
+    const { currentUser } = useAuth();
     const [actor, setActor] = useState({});
     const { actorId } = useParams();
 
     useEffect(() => {
-
         actorService.getOne(actorId)
-            .then(res => {
-                setActor(res);
+            .then(snapshot => {
+                setActor(snapshot.data());
             });
 
     }, [actorId]);
 
+    
     const ownerButtons = (
         <div className={`${styles.boxtwo} text-center`}>
             <Link to={`/edit/${actorId}`} className={'btn btn-warning mt-5 me-2'}>Edit</Link>
@@ -76,8 +75,8 @@ const Details = () => {
                         </div>
                         <div>
 
-                            {user._id !== ''
-                                ? user._id === actor._ownerId
+                            {currentUser
+                                ? currentUser.uid === actor._ownerId
                                     ? ownerButtons
                                     : userButtons
                                 : ''}

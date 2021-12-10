@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router';
-import useLocalStorage from './hooks/useLocalStorage';
-import { AuthContext } from './contexts/AuthContext';
+
+import {  AuthProvider } from './contexts/AuthContext';
 import './App.css'
 
 import Navbar from './components/Navbar';
@@ -15,25 +15,10 @@ import Edit from './components/Edit/Edit';
 import Logout from './components/Logout/Logout';
 
 
-const initialAuthState = {
-  _id: '',
-  email: '',
-  accessToken: ''
-}
-
 function App() {
-    const [user, setUser] = useLocalStorage("user", initialAuthState);
-
-    const login = (authData) => {
-        setUser(authData);
-    }
-
-    const logout = () => {
-      setUser(initialAuthState);
-    }
 
   return (
-    <AuthContext.Provider value={{user, login, logout}} >
+    <AuthProvider>
     <div className="App">
       <Navbar />
      
@@ -51,7 +36,8 @@ function App() {
 
       <Footer />
     </div>
-    </AuthContext.Provider>
+    </AuthProvider>
+   
   );
 }
 

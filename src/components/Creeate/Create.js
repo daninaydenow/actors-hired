@@ -1,17 +1,16 @@
 import { useNavigate } from 'react-router';
-import { useContext } from 'react/cjs/react.development';
-import { AuthContext } from '../../contexts/AuthContext';
+import {  useAuth } from '../../contexts/AuthContext';
 import * as actorService from '../../services/actorService';
 import styles from './Create.module.css'
 const Create = () => {
     const navigate = useNavigate();
-    const {user} = useContext(AuthContext);
+    const {currentUser} = useAuth();
     
     const createPortfolioHandler = (e) => {
         e.preventDefault();
         const {profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience} = Object.fromEntries(new FormData(e.currentTarget));
         // TODO: validate fields
-        actorService.create({profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience, likes:[]}, user)
+        actorService.create({profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience, likes:[], _ownerId: currentUser.uid })
         .then(res => {
            console.log(res);
            navigate('/portfolios');

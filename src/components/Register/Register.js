@@ -1,12 +1,11 @@
-import { useContext } from 'react';
+
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext';
-import * as authService from '../../services/authService';
+import { useAuth } from '../../contexts/AuthContext';
 import styles from './Register.module.css';
 
 const Register = () => {
      const navigate = useNavigate();
-     const {login} = useContext(AuthContext);
+     const {register} = useAuth();
  
      const registerHandler = (e) => {
           e.preventDefault();
@@ -14,13 +13,11 @@ const Register = () => {
           const {email, password, rePassword} = Object.fromEntries(new FormData(e.currentTarget));
           if(password !== rePassword) {
             //  TODO:  Show error notification
+            return;
           }
-
-          authService.register(email, password)
-          .then(userData => {
-              login(userData);
-              navigate('/')
-          })
+          register(email, password);
+          navigate('/');
+         
 
      }
 

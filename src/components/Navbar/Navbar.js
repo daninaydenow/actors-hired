@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import {  useAuth } from "../../contexts/AuthContext";
 import './Navbar.css'
 const Navbar = () => {
-  const {user} = useContext(AuthContext);
-
+  const {currentUser} = useAuth();
+  console.log(currentUser);
   const userNavigation = (
     <>
       <li className="nav-item">
@@ -46,7 +45,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/portfolios">Portfolios</Link>
               </li>
-              {user.accessToken !== ''
+              {currentUser
                 ? userNavigation
                 : guestNavigation}
             </ul>

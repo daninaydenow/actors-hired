@@ -1,23 +1,26 @@
 import { useState, useEffect } from "react";
 import PortfolioCard from "./PortfolioCard";
+
 import * as actorService from '../../services/actorService';
 import styles from './Portfolios.module.css';
 const Portfolios = () => {
      const [portfolios, setPortfolios] = useState([]);
+     const [loading, setLoading] = useState(false);
 
      useEffect(() => {
-          actorService.getAll()
-          .then(res => {
-            setPortfolios(res);
-            console.log(res);
-          })
+           setLoading(true)
+           actorService.getAll()
+           .then(mySnapShot => {
+            setPortfolios(mySnapShot.docs.map((doc) => ({...doc.data(), _id: doc.id})))
+            setLoading(false);
+           }) 
      }, []);
+     
   return (
     <>
       <h1 className={styles.heading}>Browse Portfolios</h1>
       <div className={styles.flex}>
         {portfolios.map(x => <PortfolioCard key={x._id} {...x} />)}
-  
       </div>
     </>
 

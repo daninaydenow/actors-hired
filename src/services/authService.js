@@ -1,5 +1,5 @@
 
-import { requester } from "../api/requester";
+
 
 export const login = (email, password) => {
     const endPoint = '/users/login';
