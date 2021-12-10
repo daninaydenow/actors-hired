@@ -19,10 +19,10 @@ const Edit = () => {
     const editPortfolioHandler = (e) => {
         e.preventDefault();
         let { profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience } = Object.fromEntries(new FormData(e.currentTarget));
-        // actorService.update(currentUser, actorId, { profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience })
-        //     .then(res => {
-        //         navigate(`/details/${actorId}`);
-        //     });
+        actorService.update(actorId, { profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience })
+            .then(() => {
+                navigate(`/details/${actorId}`);
+            });
     }
 
     return (
