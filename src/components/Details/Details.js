@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import {  useAuth } from '../../contexts/AuthContext';
 import * as actorService from '../../services/actorService';
 import styles from './Details.module.css';
 
 const Details = () => {
+    const navigate = useNavigate();
     const [actor, setActor] = useState({});
     const [loading, setLoading] = useState(false);
+
     const { currentUser } = useAuth();
     const { actorId } = useParams();
 
@@ -18,11 +20,18 @@ const Details = () => {
 
     }, [actorId]);
 
+    const deletePortfolioHandler = (e) => {
+        actorService.remove(actorId)
+        .then(() => {
+             navigate('/portfolios');
+        })
+    }
+
     
     const ownerButtons = (
         <div className={`${styles.boxtwo} text-center`}>
             <Link to={`/edit/${actorId}`} className={'btn btn-warning mt-5 me-2'}>Edit</Link>
-            <button className={'btn btn-danger mt-5 me-2'}>Delete</button>
+            <button className={'btn btn-danger mt-5 me-2'} onClick={deletePortfolioHandler}>Delete</button>
         </div>
     )
 
