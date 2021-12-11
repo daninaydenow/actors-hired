@@ -7,6 +7,7 @@ import styles from './Details.module.css';
 const Details = () => {
     const navigate = useNavigate();
     const [actor, setActor] = useState({});
+    const [likes, setLikes] = useState();
     const [loading, setLoading] = useState(false);
 
     const { currentUser } = useAuth();
@@ -16,15 +17,26 @@ const Details = () => {
         actorService.getOne(actorId)
             .then(snapshot => {
                 setActor(snapshot.data());
+                setLikes(snapshot.data().likes);
             });
 
-    }, [actorId]);
+    }, [actorId, likes]);
 
     const deletePortfolioHandler = (e) => {
         actorService.remove(actorId)
         .then(() => {
              navigate('/portfolios');
         })
+    }
+
+    const likePortfolioHandler = () => {
+         const addedLikes = likes.slice()
+         addedLikes.push(currentUser.uid);
+         actorService.update(actorId, {likes: addedLikes})
+         .then(res => {
+             console.log('Like Result')
+             console.log(res);
+         })
     }
 
     
@@ -40,9 +52,12 @@ const Details = () => {
             <div className={`${styles.box} text-center`}>
                 <Link to="/home" className={`btn btn-warning mt-5`}>Hire Actor!</Link>
             </div>
-            <div className={`${styles.boxthree} text-center`}>
-                <button className={'btn btn-primary mt-5'}>Like</button>
-                <div className={'btn btn-primary mt-5'}>Likes: </div>
+            <div className={`${styles.boxthree} d-flex justify-content-center align-items-center text-center`}>
+                {likes?.includes(currentUser.uid) 
+                    ? ""
+                    : <button className={'btn btn-primary mt-4 me-5'} onClick={likePortfolioHandler}>Like</button>}
+                
+                <p className={'mt-5'} >Likes: {likes?.length} </p>
             </div>
         </>
     )

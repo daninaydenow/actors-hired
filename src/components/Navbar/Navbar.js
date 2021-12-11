@@ -3,7 +3,7 @@ import {  useAuth } from "../../contexts/AuthContext";
 import './Navbar.css'
 const Navbar = () => {
   const {currentUser} = useAuth();
-  console.log(currentUser);
+
   const userNavigation = (
     <>
       <li className="nav-item">
@@ -27,7 +27,6 @@ const Navbar = () => {
       </li>
     </>
   )
-
 
   return (
     <>
