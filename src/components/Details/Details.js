@@ -8,6 +8,7 @@ const Details = () => {
     const navigate = useNavigate();
     const [actor, setActor] = useState({});
     const [likes, setLikes] = useState();
+
     const [loading, setLoading] = useState(false);
 
     const { currentUser } = useAuth();
@@ -20,7 +21,7 @@ const Details = () => {
                 setLikes(snapshot.data().likes);
             });
 
-    }, [actorId, likes]);
+    }, [actorId]);
 
     const deletePortfolioHandler = (e) => {
         actorService.remove(actorId)
@@ -28,14 +29,13 @@ const Details = () => {
              navigate('/portfolios');
         })
     }
-
+    
     const likePortfolioHandler = () => {
-         const addedLikes = likes.slice()
+         const addedLikes = likes.slice();
          addedLikes.push(currentUser.uid);
          actorService.update(actorId, {likes: addedLikes})
-         .then(res => {
-             console.log('Like Result')
-             console.log(res);
+         .then(() => {
+            setLikes(addedLikes);
          })
     }
 
