@@ -8,7 +8,7 @@ import styles from './Details.module.css';
 const Details = () => {
     const navigate = useNavigate();
     const [actor, setActor] = useState({});
-    const [likes, setLikes] = useState();
+    const [likes, setLikes] = useState([]);
     const [userHirings, setUserHirings] = useState([]);
     const [alreadyHired, setAlreadyHired] = useState(false);
 
@@ -24,11 +24,11 @@ const Details = () => {
             });
 
 
-        if(currentUser) {
-        userService.getUserHirings(currentUser?.uid)
-            .then((snapshot) => {
-                setUserHirings(snapshot.data().hired);
-            });
+        if (currentUser) {
+            userService.getUserHirings(currentUser?.uid)
+                .then((snapshot) => {
+                    setUserHirings(snapshot.data().hired);
+                });
         }
 
 
@@ -57,6 +57,7 @@ const Details = () => {
         hiredNewActor.push(actorId);
         actorService.hire(currentUser.uid, hiredNewActor)
             .then(() => {
+                setAlreadyHired(true);
             })
     }
 
@@ -71,17 +72,19 @@ const Details = () => {
     const userButtons = (
         <>
             <div className={`${styles.box} text-center`}>
-                {userHirings.includes(actorId)
+                {alreadyHired
                     ? ""
-                    : <button className={`btn btn-warning mt-5`} onClick={hireActorHandler}>Hire Actor!</button>}
+                    : userHirings.includes(actorId)
+                        ? ""
+                        : <button className={`btn btn-warning mt-5`} onClick={hireActorHandler}>Hire Actor!</button>}
 
             </div>
             <div className={`${styles.boxthree} d-flex justify-content-center align-items-center text-center`}>
                 {
-                     likes?.includes(currentUser?.uid)
+                    likes.includes(currentUser?.uid)
                         ? ""
                         : <button className={'btn btn-primary mt-4 me-5'} onClick={likePortfolioHandler}>Like</button>
-                    }
+                }
                 <p className={'mt-5'} >Likes: {likes?.length} </p>
             </div>
         </>
