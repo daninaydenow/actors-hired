@@ -9,6 +9,9 @@ const Navbar = () => {
       <li className="nav-item">
         <Link className="nav-link" to="/create">Create Portfolio</Link>
       </li>
+      <li>
+        <Link to="/profile" className="nav-link">Welcome, {currentUser?.email}</Link>
+      </li>
       <li className="nav-item">
         <Link to="/profile" className="btn btn-warning">Profile</Link>
       </li>
