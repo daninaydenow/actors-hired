@@ -7,14 +7,19 @@ export const create = async (actorData) => {
     return await addDoc(portfoliosCollectionRef, actorData);
 }
 
-export const update = async (id, actorData) => {
-    const userDocRef = doc(db, 'portfolios', id);
+export const update = async (actorId, actorData) => {
+    const userDocRef = doc(db, 'portfolios', actorId);
     return await updateDoc(userDocRef, actorData);
 } 
 
-export const remove = async (id) => {
-    const userDocRef = doc(db, 'portfolios', id);
+export const remove = async (actorId) => {
+    const userDocRef = doc(db, 'portfolios', actorId);
     return await deleteDoc(userDocRef);
+}
+
+export const hire = async (userId, hiredNewActor) => {
+    const hiredDocRef = doc(db, 'actorshired', userId);
+    return await updateDoc(hiredDocRef, {hired: hiredNewActor});
 }
 
 export const getAll = async () => {

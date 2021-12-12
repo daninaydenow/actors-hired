@@ -1,25 +1,35 @@
 
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+
+import * as userService from '../../services/userService';
 import styles from './Register.module.css';
 
 const Register = () => {
-     const navigate = useNavigate();
-     const {register} = useAuth();
- 
-     const registerHandler = (e) => {
-          e.preventDefault();
+    const navigate = useNavigate();
+    const { register } = useAuth();
 
-          const {email, password, rePassword} = Object.fromEntries(new FormData(e.currentTarget));
-          if(password !== rePassword) {
+    const registerHandler = (e) => {
+        e.preventDefault();
+
+        const { email, password, rePassword } = Object.fromEntries(new FormData(e.currentTarget));
+        if (password !== rePassword) {
             //  TODO:  Show error notification
             return;
-          }
-          register(email, password);
-          navigate('/');
-         
+        }
 
-     }
+        register(email, password)
+            .then(() => {
+                const user = JSON.parse(localStorage.getItem('user'));
+                userService.createEmptyHiring(user.uid)
+                .then(() => {
+                    navigate('/');
+                })
+            })
+        
+
+
+    }
 
     return (
         <section id="register-page" className={styles.form}>
@@ -49,10 +59,10 @@ const Register = () => {
                     </div>
                     <div className={`${styles.row} mb-3 row`}>
                         <p className={styles.row}>Already have an account ?</p>
-                    <div >
-                        <Link to="/login" className={styles.row}>Sign in!</Link>
+                        <div >
+                            <Link to="/login" className={styles.row}>Sign in!</Link>
+                        </div>
                     </div>
-                </div>
                 </div>
             </form>
         </section>
