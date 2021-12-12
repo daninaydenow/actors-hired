@@ -11,7 +11,7 @@ export const useAuth = () => {
 
 
 export const AuthProvider = ({children}) => {
-    const [currentUser, setCurrentUser] = useLocalStorage("user", {});
+    const [currentUser, setCurrentUser] = useLocalStorage("user", undefined);
 
     const register = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -23,6 +23,7 @@ export const AuthProvider = ({children}) => {
     const login = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
         .then((actorCredentials) => {
+            console.log(actorCredentials);
             setCurrentUser({uid: actorCredentials.user.uid, email: actorCredentials.user.email});
        })
     }
