@@ -13,6 +13,7 @@ import Details from './components/Details';
 import Create from './components/Creeate/Create';
 import Edit from './components/Edit/Edit';
 import Logout from './components/Logout/Logout';
+import Profile from './components/Profile';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />}/>

@@ -1,0 +1,25 @@
+.boxOne {
+    border-color:gold;
+    background-color: #282c34;
+    position: absolute;
+    min-height: 36rem;
+    /* height: 100px; */
+    width: 37rem;
+    right: 18rem;
+}
+
+.boxTwo {
+    border-color:gold;
+    background-color: #282c34;
+    position: absolute;
+    height: 36rem;
+    width: 37rem;
+    left: 2.5rem;
+}
+
+.heading {
+    position: absolute;
+    color: white;
+    top: 6rem;
+    right: 4rem;
+}
