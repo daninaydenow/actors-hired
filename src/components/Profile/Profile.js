@@ -12,7 +12,6 @@ import styles from './Profile.module.css';
 export const Profile = () => {
     const [myHirings, setMyHirings] = useState([]);
     const [allPortFolios, setAllPortFolios] = useState([]);
-    const [myPortfolios, setMyPortfolios] = useState([]);
 
     const { currentUser } = useAuth();
 
@@ -29,18 +28,18 @@ export const Profile = () => {
 
     }, [])
 
-    const populatedHirings = [];
+    const populatedMyHirings = [];
     myHirings.forEach((id) => {
         allPortFolios.forEach(portfolio => {
             if (id === portfolio._id) {
-                const actorInfo = { name: portfolio.name, actorId: portfolio._id };
-                populatedHirings.push(actorInfo);
+                const actorInfo = { name: portfolio.name, _id: portfolio._id };
+                populatedMyHirings.push(actorInfo);
             }
         })
-    })
-    
-
-
+    });
+   
+    const populatedMyPortfolios = allPortFolios.filter((x) => x._ownerId == currentUser.uid);
+    console.log(populatedMyPortfolios);
 
     const profile = {
         alert: "You don't have any portfolios yet!",
@@ -62,8 +61,8 @@ export const Profile = () => {
             <div className={`${styles.boxOne} card`}>
                 <h1 className='h1 text-white p-2 '>My Portfolios</h1>
                 <ul className='p-2'>
-                    {myPortfolios.length > 0
-                        ? myPortfolios.map((x) => <ProfileListItem key={x._id} {...x} />)
+                    {populatedMyPortfolios.length > 0
+                        ? populatedMyPortfolios.map((x) => <ProfileListItem key={x._id} {...x} />)
                         : <MissingData {...profile} />
                     }
                 </ul>
@@ -71,8 +70,8 @@ export const Profile = () => {
             <div className={`${styles.boxTwo} card`}>
                 <h1 className='h1 text-white p-2'>My Hirings</h1>
                 <ul className="container-fluid p-2">
-                    {populatedHirings.length > 0
-                        ? populatedHirings.map((x) => <ProfileListItem key={x.id} {...x} />)
+                    {populatedMyHirings.length > 0
+                        ? populatedMyHirings.map((x) => <ProfileListItem key={x._id} {...x} />)
                         : <MissingData {...hirings} />}
                 </ul>
             </div>
