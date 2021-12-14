@@ -8,11 +8,11 @@ const Portfolios = () => {
      const [loading, setLoading] = useState(false);
 
      useEffect(() => {
-           setLoading(true)
+      
            actorService.getAll()
            .then(mySnapShot => {
             setPortfolios(mySnapShot.docs.map((doc) => ({...doc.data(), _id: doc.id})))
-            setLoading(false);
+            
            }) 
      }, []);
      
