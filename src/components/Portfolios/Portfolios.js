@@ -20,7 +20,9 @@ const Portfolios = () => {
     <>
       <h1 className={styles.heading}>Browse Portfolios</h1>
       <div className={styles.flex}>
-        {portfolios.map(x => <PortfolioCard key={x._id} {...x} />)}
+        { portfolios
+        ? portfolios.map(x => <PortfolioCard key={x._id} {...x} />)
+        : <h1>No portfolios have been created yet!</h1>}
       </div>
     </>
 
