@@ -12,7 +12,6 @@ const Home = () => {
                     <Link className="btn btn-warning btn-lg" to="/portfolios" role="button">Hire now</Link>
                 </p>
             </div>
-
         </>
     )
 }
