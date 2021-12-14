@@ -4,7 +4,7 @@ const Home = () => {
 
     return (
         <>
-            <div className={`${styles.hero} + jumbotron`}>
+            <div className={`${styles.hero} + jumbotron mb-5`}>
                 <h1 className="display-3">Weolcome to Actors Hired !</h1>
                 <p className="lead">Wolrd's first casting-directors free platform !</p>
                 <p>Hire an actor now !</p>
