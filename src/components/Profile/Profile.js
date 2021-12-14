@@ -38,6 +38,7 @@ export const Profile = () => {
             }
         })
     })
+    
 
 
 
@@ -52,7 +53,7 @@ export const Profile = () => {
         alert: "You have no hirings yet!",
         action: "Find the best actor for your performance!",
         buttonName: "Hire Now",
-        path: "/create"
+        path: "/portfolios"
     }
 
     return (
