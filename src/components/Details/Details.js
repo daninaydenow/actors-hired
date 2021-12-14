@@ -25,7 +25,7 @@ const Details = () => {
 
 
         if (currentUser) {
-            userService.getUserHirings(currentUser?.uid)
+            userService.getUserHirings(currentUser.uid)
                 .then((snapshot) => {
                     setUserHirings(snapshot.data().hired);
                 });
