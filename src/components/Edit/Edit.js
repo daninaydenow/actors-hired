@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import * as actorService from '../../services/actorService';
-import {  useAuth } from "../../contexts/AuthContext";
 import styles from './Edit.module.css'
 const Edit = () => {
     const navigate = useNavigate();
     const [actor, setActor] = useState({});
+
     const { actorId } = useParams();
-    const { currentUser } = useAuth();
+    
 
     useEffect(() => {
         actorService.getOne(actorId)
@@ -22,7 +22,10 @@ const Edit = () => {
         actorService.update(actorId, { profImgUrl, name, genre, imgOneUrl, imgTwoUrl, imgThreeUrl, experience })
             .then(() => {
                 navigate(`/details/${actorId}`);
-            });
+            })
+            .catch(error => {
+                
+            })
     }
 
     return (
