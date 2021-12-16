@@ -26,7 +26,7 @@ export const Profile = () => {
                 setAllPortFolios(snapshot.docs.map((doc) => ({ ...doc.data(), _id: doc.id })))
             })
 
-    }, [])
+    }, [currentUser])
 
     const populatedMyHirings = [];
     myHirings.forEach((id) => {
@@ -38,7 +38,7 @@ export const Profile = () => {
         })
     });
    
-    const populatedMyPortfolios = allPortFolios.filter((x) => x._ownerId == currentUser.uid);
+    const populatedMyPortfolios = allPortFolios.filter((x) => x._ownerId === currentUser.uid);
     console.log(populatedMyPortfolios);
 
     const profile = {
