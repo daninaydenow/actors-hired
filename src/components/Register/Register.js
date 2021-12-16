@@ -26,8 +26,10 @@ const Register = () => {
                     })
             })
             .catch(error => {
-                console.log(error.code);
-                setFormErrors({...formErrors, email: error.code})
+                if(error.code === 'auth/email-already-in-use') {
+                    setFormErrors({...formErrors, email: "A user with the same email already exists!"})
+                }
+                
             })
         }
        }, [formErrors, isSubmit])
