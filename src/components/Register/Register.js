@@ -33,7 +33,7 @@ const Register = () => {
                 
             })
         }
-       }, [formErrors, isSubmit])
+       }, [formErrors, isSubmit, formValues, navigate, register])
 
     const registerHandler = (e) => {
         e.preventDefault();

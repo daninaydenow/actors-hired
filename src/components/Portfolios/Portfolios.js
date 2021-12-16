@@ -5,7 +5,6 @@ import * as actorService from '../../services/actorService';
 import styles from './Portfolios.module.css';
 const Portfolios = () => {
      const [portfolios, setPortfolios] = useState([]);
-     const [loading, setLoading] = useState(false);
 
      useEffect(() => {
       
