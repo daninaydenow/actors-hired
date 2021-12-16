@@ -47,15 +47,21 @@ const Create = () => {
         const errors = {};
         if (!values.profImgUrl) {
             errors.profImgUrl = "Profile image URL is required!"
+        } else if (!values.profImgUrl.startsWith('https://')) {
+            errors.profImgUrl = "Valid Image URL required!"
         }
         if (!values.name) {
-            errors.name = "Actor name is required!"
+            errors.name = "Name is required!"
+        } else if (values.name.length < 6) {
+            errors.name = "Name cannot be shorter than 6 characters!"
         }
         if (!values.genre) {
             errors.genre = "Genre is required!"
         }
         if (!values.experience) {
-            errors.experience = "Actor experience is required!"
+            errors.experience = "Experience is required!"
+        } else if (values.experience.length < 10) {
+            errors.experience = "Experience field must contain more than 10 characters!"
         }
         return errors;
     }
