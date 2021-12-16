@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import {  useAuth } from '../../contexts/AuthContext';
 
+import { validate } from '../../helpers/formValidator';
+
 import styles from './Login.module.css';
 
 const initialFormValues = {email: '', password: ''};
@@ -43,20 +45,6 @@ const Login = () => {
   const onChangeHandler = (e) => {
     const {name, value} = e.target;
     setFormValues({...formValues, [name]: value});
-  }
-
-  const validate = (values) => {
-    const errors = {};
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if(!values.email) {
-      errors.email = "Please enter Your email!"
-    } else if (!regex.test(values.email)) {
-      errors.email = "This is not a valid email format!"
-    }
-    if(!values.password) {
-      errors.password = "Please enter Your password!"
-    }
-    return errors;
   }
 
   return (
