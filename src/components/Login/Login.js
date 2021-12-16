@@ -61,6 +61,7 @@ const Login = () => {
                 className="form-control" 
                 id="email" 
                 name="email"
+                value={formValues.email}
                 onChange={onChangeHandler} 
                 />
               </div>
@@ -74,6 +75,7 @@ const Login = () => {
                 className="form-control" 
                 id="password" 
                 name="password"
+                value={formValues.password}
                 onChange={onChangeHandler} 
                 />
               </div>
