@@ -23,7 +23,6 @@ export const AuthProvider = ({children}) => {
     const login = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
         .then((actorCredentials) => {
-            console.log(actorCredentials);
             setCurrentUser({uid: actorCredentials.user.uid, email: actorCredentials.user.email});
        })
     }
