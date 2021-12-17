@@ -14,7 +14,7 @@ const Portfolios = () => {
           setPortfolios(mySnapShot.docs.map((doc) => ({ ...doc.data(), _id: doc.id })))
           setLoading(false);
         })
-    }, 3000);
+    }, 1500);
   }, []);
 
 
@@ -24,7 +24,7 @@ const Portfolios = () => {
       <h1 className={styles.heading}>Browse Portfolios</h1>
       <div className={styles.flex}>
         {loading && loadSpinner}
-        {portfolios
+        {portfolios 
           ? portfolios.map(x => <PortfolioCard key={x._id} {...x} />)
           : <h1>No portfolios have been created yet!</h1>}
       </div>

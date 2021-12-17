@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+
+import {loadSpinner} from '../../helpers/loadSpinner';
+
 import * as userService from '../../services/userService';
 import * as actorService from '../../services/actorService';
 import styles from './Details.module.css';
@@ -11,13 +14,14 @@ const Details = () => {
     const [likes, setLikes] = useState([]);
     const [userHirings, setUserHirings] = useState([]);
     const [alreadyHired, setAlreadyHired] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const { currentUser } = useAuth();
     const { actorId } = useParams();
 
     useEffect(() => {
-
-        actorService.getOne(actorId)
+        setTimeout(() => {
+            actorService.getOne(actorId)
             .then(snapshot => {
                 setActor(snapshot.data());
                 setLikes(snapshot.data().likes);
@@ -30,7 +34,8 @@ const Details = () => {
                     setUserHirings(snapshot.data().hired);
                 });
         }
-
+        setLoading(false);
+        }, 1500)
 
     }, [actorId, currentUser]);
 
@@ -127,13 +132,12 @@ const Details = () => {
                             <p>{actor.experience}</p>
                         </div>
                         <div>
-
-                            {currentUser
+                            {loading && loadSpinner}
+                            {currentUser && !loading
                                 ? currentUser.uid === actor._ownerId
                                     ? ownerButtons
                                     : userButtons
                                 : ''}
-
                         </div>
                     </div>
                 </div>

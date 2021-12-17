@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { useAuth } from '../../contexts/AuthContext';
+import { loadSpinner } from '../../helpers/loadSpinner';
 import * as userService from '../../services/userService';
 import * as actorService from '../../services/actorService';
 
@@ -12,19 +13,25 @@ import styles from './Profile.module.css';
 export const Profile = () => {
     const [myHirings, setMyHirings] = useState([]);
     const [allPortFolios, setAllPortFolios] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const { currentUser } = useAuth();
 
     useEffect(() => {
-        userService.getUserHirings(currentUser.uid)
-            .then((snapshot) => {
-                setMyHirings(snapshot.data().hired);
-            });
+        setTimeout(() => {
+            userService.getUserHirings(currentUser.uid)
+                .then((snapshot) => {
+                    setMyHirings(snapshot.data().hired);
+                });
 
-        actorService.getAll()
-            .then(snapshot => {
-                setAllPortFolios(snapshot.docs.map((doc) => ({ ...doc.data(), _id: doc.id })))
-            })
+            actorService.getAll()
+                .then(snapshot => {
+                    setAllPortFolios(snapshot.docs.map((doc) => ({ ...doc.data(), _id: doc.id })))
+                })
+
+            setLoading(false);
+        }, 1500)
+
 
     }, [currentUser])
 
@@ -37,9 +44,8 @@ export const Profile = () => {
             }
         })
     });
-   
+
     const populatedMyPortfolios = allPortFolios.filter((x) => x._ownerId === currentUser.uid);
-    console.log(populatedMyPortfolios);
 
     const profile = {
         alert: "You don't have any portfolios yet!",
@@ -61,7 +67,8 @@ export const Profile = () => {
             <div className={`${styles.boxOne} card`}>
                 <h1 className='h1 text-white p-2 '>My Portfolios</h1>
                 <ul className='p-2'>
-                    {populatedMyPortfolios.length > 0
+                    {loading && loadSpinner}
+                    {populatedMyPortfolios.length > 0 || loading
                         ? populatedMyPortfolios.map((x) => <ProfileListItem key={x._id} {...x} />)
                         : <MissingData {...profile} />
                     }
@@ -70,7 +77,8 @@ export const Profile = () => {
             <div className={`${styles.boxTwo} card`}>
                 <h1 className='h1 text-white p-2'>My Hirings</h1>
                 <ul className="container-fluid p-2">
-                    {populatedMyHirings.length > 0
+                    {loading && loadSpinner}
+                    {populatedMyHirings.length > 0 || loading
                         ? populatedMyHirings.map((x) => <ProfileListItem key={x._id} {...x} />)
                         : <MissingData {...hirings} />}
                 </ul>

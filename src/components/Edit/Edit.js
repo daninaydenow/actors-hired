@@ -1,19 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
+
 import * as actorService from '../../services/actorService';
-import styles from './Edit.module.css'
+
+import styles from './Edit.module.css' 
 const Edit = () => {
     const navigate = useNavigate();
     const [actor, setActor] = useState({});
+    const [loading, setLoading] = useState(true);
 
     const { actorId } = useParams();
-    
+
 
     useEffect(() => {
-        actorService.getOne(actorId)
-        .then(snapshot => {
-            setActor(snapshot.data());
-        });
+        setTimeout(() => {
+            actorService.getOne(actorId)
+                .then(snapshot => {
+                    setActor(snapshot.data());
+                });
+            setLoading(false);
+        }, 1500)
+
     }, [actorId]);
 
     const editPortfolioHandler = (e) => {
@@ -24,9 +31,17 @@ const Edit = () => {
                 navigate(`/details/${actorId}`);
             })
             .catch(error => {
-                
+
             })
     }
+
+    const loadButton =  (
+        <button class="btn btn-warning mt-5" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+      </button>
+    )
+
 
     return (
         <form id="edit-form" method="POST" onSubmit={editPortfolioHandler}>
@@ -70,9 +85,12 @@ const Edit = () => {
                                 <textarea className="form-control" rows="5" name="experience" defaultValue={actor.experience} />
                             </div>
                             <div className="text-center">
-                                <button className={'btn btn-warning mt-5'}>Edit Portfolio</button>
+                                {loading
+                                ? loadButton
+                                : <button className={'btn btn-warning mt-5'}>Edit Portfolio</button>}
                             </div>
                         </div>
+
                     </div>
                 </div>
 
