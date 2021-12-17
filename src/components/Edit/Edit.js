@@ -51,16 +51,31 @@ const Edit = () => {
                         <div className={`h-100`}>
                             <div className={` ${styles.border} ${styles.imgsize} text-center mb-2`}>
                                 <h2 className="mb-5">Edit Portfolio</h2>
-                                <label htmlFor="profImgUrl" className="mt-4"> Profile Image Url</label>
-                                <input type="text" name="profImgUrl" className="form-control" defaultValue={actor.profImgUrl} />
+                                <label htmlFor="profImgUrl" className="mt-4"> Profile Image Url <span className='text-danger'>*</span></label>
+                                <input 
+                                type="text" 
+                                name="profImgUrl" 
+                                className="form-control" 
+                                defaultValue={actor.profImgUrl} 
+                                />
                             </div>
                             <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
-                                <label htmlFor="name" className="ps-2 pe-4 mt-1">Name</label>
-                                <input type="text" name="name" className="form-control" defaultValue={actor.name} />
+                                <label htmlFor="name" className="ps-2 pe-4 mt-1">Name <span className='text-danger'>*</span></label>
+                                <input 
+                                type="text" 
+                                name="name" 
+                                className="form-control" 
+                                defaultValue={actor.name} 
+                                />
                             </div>
                             <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
-                                <label htmlFor="genre" className="ps-2 pe-4 mt-1">Genre</label>
-                                <input type="text" name="genre" className="form-control" defaultValue={actor.genre} />
+                                <label htmlFor="genre" className="ps-2 pe-4 mt-1">Genre <span className='text-danger'>*</span></label>
+                                <input 
+                                type="text" 
+                                name="genre" 
+                                className="form-control" 
+                                defaultValue={actor.genre} 
+                                />
                             </div>
                         </div>
                     </div>
@@ -81,8 +96,12 @@ const Edit = () => {
                                 </div>
                             </div>
                             <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
-                                <h4>Experience:</h4>
-                                <textarea className="form-control" rows="5" name="experience" defaultValue={actor.experience} />
+                                <h4>Experience: <span className='text-danger'>*</span></h4>
+                                <textarea 
+                                className="form-control" 
+                                rows="5" name="experience" 
+                                defaultValue={actor.experience} 
+                                />
                             </div>
                             <div className="text-center">
                                 {loading
