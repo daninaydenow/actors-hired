@@ -6,6 +6,7 @@ export const getUserHirings = async (userId) => {
     return await getDoc(hiredDocRef);
 }
 
+
 export const createEmptyHiring = async (userId) => {
     const actorshiredCollectionRef = doc(db, "actorshired", userId)
     return await setDoc(actorshiredCollectionRef,  {hired: []});

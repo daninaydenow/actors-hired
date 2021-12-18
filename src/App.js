@@ -14,8 +14,10 @@ import Create from './components/Creeate/Create';
 import Edit from './components/Edit/Edit';
 import Logout from './components/Logout/Logout';
 import Profile from './components/Profile';
+
 import ProtectedRoute from './components/ProtectedRoute';
 import GuestRoute from './components/GuestRoute';
+import UserRoute from './components/UserRoute';
 
 
 function App() {
@@ -52,7 +54,7 @@ function App() {
               <Create />
             </ProtectedRoute>}
           />
-          
+
           {/* Guest specific routes */}
           <Route
             path="/login"
@@ -66,7 +68,14 @@ function App() {
               <Register />
             </GuestRoute>}
           />
-          <Route path="/edit/:actorId" element={<Edit />} />
+
+          {/* User specific routes */}
+          <Route
+            path="/edit/:actorId"
+            element={<UserRoute>
+              <Edit />
+            </UserRoute>}
+          />
         </Routes>
 
         <Footer />
