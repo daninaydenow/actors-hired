@@ -68,7 +68,7 @@ export const Profile = () => {
                 <h1 className='h1 text-white p-2 '>My Portfolios</h1>
                 <ul className='p-2'>
                     {loading && loadSpinner}
-                    {populatedMyPortfolios.length > 0 || loading
+                    {populatedMyPortfolios || loading
                         ? populatedMyPortfolios.map((x) => <ProfileListItem key={x._id} {...x} />)
                         : <MissingData {...profile} />
                     }
@@ -78,7 +78,7 @@ export const Profile = () => {
                 <h1 className='h1 text-white p-2'>My Hirings</h1>
                 <ul className="container-fluid p-2">
                     {loading && loadSpinner}
-                    {populatedMyHirings.length > 0 || loading
+                    {populatedMyHirings || loading
                         ? populatedMyHirings.map((x) => <ProfileListItem key={x._id} {...x} />)
                         : <MissingData {...hirings} />}
                 </ul>
