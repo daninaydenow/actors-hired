@@ -64,7 +64,7 @@ const Register = () => {
                                 onChange={onChangeHandler}
                             />
                         </div>
-                        <p className='mt-2 text-danger'>{formErrors.email}</p>
+                        <span className='mt-2 text-danger'>{formErrors.email}</span>
                     </div>
                     <div className={`${styles.row} + mb-3 row`}>
                         <label htmlFor="inputPassword" className="col-sm-2 col-form-label">Password</label>
@@ -78,7 +78,7 @@ const Register = () => {
                                 onChange={onChangeHandler}
                                 />
                         </div>
-                        <p className='mt-2 text-danger'>{formErrors.password}</p>
+                        <span className='mt-2 text-danger'>{formErrors.password}</span>
                     </div>
                     <div className={`${styles.row} + mb-3 row`}>
                         <label htmlFor="inputRepeatPassword" className="col-sm-2 col-form-label">Confirm Password</label>
@@ -92,7 +92,7 @@ const Register = () => {
                                 onChange={onChangeHandler}
                                 />
                         </div>
-                        <p className='text-danger'>{formErrors.rePassword}</p>
+                        <span className='text-danger'>{formErrors.rePassword}</span>
                     </div>
                     <div>
                         <button type="submit" className="btn btn-danger">Register</button>
