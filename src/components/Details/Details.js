@@ -37,9 +37,10 @@ const Details = () => {
         setLoading(false);
         }, 1000)
 
-    }, [actorId, currentUser]);
+    }, [actorId, currentUser, alreadyHired]);
 
 
+    const isIncludedInUserHirings = userHirings.includes(actorId);
 
     const deletePortfolioHandler = (e) => {
         actorService.remove(actorId)
@@ -77,11 +78,7 @@ const Details = () => {
     const userButtons = (
         <>
             <div className={`${styles.box} text-center`}>
-                {alreadyHired
-                    ? ""
-                    : userHirings.includes(actorId)
-                        ? ""
-                        : <button className={`btn btn-warning mt-5`} onClick={hireActorHandler}>Hire Actor!</button>}
+                {!isIncludedInUserHirings && <button className={`btn btn-warning mt-5`} onClick={hireActorHandler}>Hire Actor!</button>}
 
             </div>
             <div className={`${styles.boxthree} d-flex justify-content-center align-items-center text-center`}>
