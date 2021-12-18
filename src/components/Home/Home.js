@@ -9,7 +9,7 @@ const Home = () => {
                 <p className="lead">Wolrd's first casting-directors free platform !</p>
                 <p>Hire an actor now !</p>
                 <p className="lead">
-                    <Link className="btn btn-warning btn-lg" to="/portfolios" role="button">Hire now</Link>
+                    <Link className="btn btn-warning btn-lg mt-2" to="/portfolios" role="button">Hire now</Link>
                 </p>
             </div>
         </>
