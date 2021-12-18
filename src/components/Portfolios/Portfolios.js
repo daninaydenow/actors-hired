@@ -21,7 +21,7 @@ const Portfolios = () => {
 
   return (
     <>
-      <h1 className='text-light'>Browse Portfolios</h1>
+      <h1 className='text-light mb-3 pb-5'>Browse Portfolios</h1>
       <div className={styles.flex}>
         {loading && loadSpinner}
         {portfolios 
