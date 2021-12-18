@@ -50,7 +50,7 @@ const Create = () => {
 
     return (
         <form method="POST" onSubmit={createPortfolioHandler}>
-            <div className={`card  ${styles.style}`}>
+            <div className={`card  ${styles.style} `}>
                 <div className="row h-100 text-start">
                     <div className={`col-3 ps-3 pe-3`}>
                         <div className={`h-100`}>
