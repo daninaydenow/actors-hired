@@ -98,15 +98,36 @@ const Create = () => {
                             <div className={` ${styles.border}  ps-2 pt-2 h-50 mb-2`}>
                                 <div className={`${styles.imgUrl}`}>
                                     <label htmlFor="imgOneUrl">Image 1 Url</label>
-                                    <input type="text" name="imgOneUrl" className="form-control" placeholder="Enter the url of Your portfolio Image" />
+                                    <input 
+                                    type="text" 
+                                    name="imgOneUrl" 
+                                    className="form-control" 
+                                    placeholder="Enter the url of Your portfolio Image" 
+                                    value={formValues.imgOneUrl}
+                                    onChange={onChangeHandler}
+                                    />
                                 </div>
                                 <div className={`${styles.imgUrl} mt-3`}>
                                     <label htmlFor="imgTwoUrl">Image 2 Url</label>
-                                    <input type="text" name="imgTwoUrl" className="form-control" placeholder="Enter the url of Your portfolio Image" />
+                                    <input 
+                                    type="text" 
+                                    name="imgTwoUrl" 
+                                    className="form-control" 
+                                    placeholder="Enter the url of Your portfolio Image"
+                                    value={formValues.imgTwoUrl}
+                                    onChange={onChangeHandler} 
+                                    />
                                 </div>
                                 <div className={`${styles.imgUrl} mt-3`}>
                                     <label htmlFor="imgThreeUrl">Image 3 Url</label>
-                                    <input type="text" name="imgThreeUrl" className="form-control" placeholder="Enter the url of Your portfolio Image" />
+                                    <input
+                                    type="text" 
+                                    name="imgThreeUrl" 
+                                    className="form-control" 
+                                    placeholder="Enter the url of Your portfolio Image"
+                                    value={formValues.imgThreeUrl}
+                                    onChange={onChangeHandler} 
+                                    />
                                 </div>
                             </div>
                             <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
