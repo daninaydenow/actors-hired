@@ -36,7 +36,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/home">
-            <img src="logo-color.svg" alt="logo-color.svg"/>
+            <img src="/logo-color.svg" alt="logo-color.svg"/>
             <span className="ps-3">Actors Hired</span>
           </Link>
           <div>
