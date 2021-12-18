@@ -11,7 +11,7 @@ const UserRoute = ({ children }) => {
     useEffect(() => {
         actorService.getAll()
         .then(snapshot => {
-            userPortfolios = snapshot.docs.map((doc) => ({_id: doc.id })).filter(x => x._ownerId === currentUser.uid);
+            userPortfolios = snapshot.docs.map((doc) => ({_id: doc.id })).filter(x => x._ownerId === currentUser?.uid);
         })
     })
 
