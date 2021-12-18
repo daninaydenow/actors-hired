@@ -35,7 +35,7 @@ const Details = () => {
                 });
         }
         setLoading(false);
-        }, 1500)
+        }, 1000)
 
     }, [actorId, currentUser]);
 

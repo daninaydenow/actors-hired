@@ -19,7 +19,7 @@ const Edit = () => {
                     setActorInfo(snapshot.data());
                 });
             setLoading(false);
-        }, 1500)
+        }, 1000)
 
     }, [actorId]);
 

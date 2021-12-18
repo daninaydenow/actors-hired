@@ -15,7 +15,7 @@ const Portfolios = () => {
           setPortfolios(snapshot.docs.map((doc) => ({ ...doc.data(), _id: doc.id })))
           setLoading(false);
         })
-    }, 1500);
+    }, 1000);
   }, []);
 
 
