@@ -28,6 +28,7 @@ function App() {
         <Navbar />
 
         <Routes>
+          {/* Routes accessible for all types of users */}
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/portfolios" element={<Portfolio />} />
