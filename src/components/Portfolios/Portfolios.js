@@ -7,11 +7,12 @@ import styles from './Portfolios.module.css';
 const Portfolios = () => {
   const [portfolios, setPortfolios] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     setTimeout(() => {
       actorService.getAll()
-        .then(mySnapShot => {
-          setPortfolios(mySnapShot.docs.map((doc) => ({ ...doc.data(), _id: doc.id })))
+        .then(snapshot => {
+          setPortfolios(snapshot.docs.map((doc) => ({ ...doc.data(), _id: doc.id })))
           setLoading(false);
         })
     }, 1500);
