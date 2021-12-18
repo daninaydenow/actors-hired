@@ -6,7 +6,7 @@ import * as actorService from '../../services/actorService';
 import styles from './Edit.module.css' 
 const Edit = () => {
     const navigate = useNavigate();
-    const [actor, setActor] = useState({});
+    const [actorInfo, setActorInfo] = useState({});
     const [loading, setLoading] = useState(true);
 
     const { actorId } = useParams();
@@ -16,7 +16,7 @@ const Edit = () => {
         setTimeout(() => {
             actorService.getOne(actorId)
                 .then(snapshot => {
-                    setActor(snapshot.data());
+                    setActorInfo(snapshot.data());
                 });
             setLoading(false);
         }, 1500)
@@ -56,7 +56,7 @@ const Edit = () => {
                                 type="text" 
                                 name="profImgUrl" 
                                 className="form-control" 
-                                defaultValue={actor.profImgUrl} 
+                                defaultValue={actorInfo.profImgUrl} 
                                 />
                             </div>
                             <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
@@ -65,7 +65,7 @@ const Edit = () => {
                                 type="text" 
                                 name="name" 
                                 className="form-control" 
-                                defaultValue={actor.name} 
+                                defaultValue={actorInfo.name} 
                                 />
                             </div>
                             <div className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}>
@@ -74,7 +74,7 @@ const Edit = () => {
                                 type="text" 
                                 name="genre" 
                                 className="form-control" 
-                                defaultValue={actor.genre} 
+                                defaultValue={actorInfo.genre} 
                                 />
                             </div>
                         </div>
@@ -84,15 +84,15 @@ const Edit = () => {
                             <div className={` ${styles.border}  ps-2 pt-2 h-50 mb-2`}>
                                 <div className={`${styles.imgUrl}`}>
                                     <label htmlFor="imgOneUrl">Image 1 Url</label>
-                                    <input type="text" name="imgOneUrl" className="form-control" defaultValue={actor.imgOneUrl} />
+                                    <input type="text" name="imgOneUrl" className="form-control" defaultValue={actorInfo.imgOneUrl} />
                                 </div>
                                 <div className={`${styles.imgUrl} mt-3`}>
                                     <label htmlFor="imgTwoUrl">Image 2 Url</label>
-                                    <input type="text" name="imgTwoUrl" className="form-control" defaultValue={actor.imgTwoUrl} />
+                                    <input type="text" name="imgTwoUrl" className="form-control" defaultValue={actorInfo.imgTwoUrl} />
                                 </div>
                                 <div className={`${styles.imgUrl} mt-3`}>
                                     <label htmlFor="imgThreeUrl">Image 3 Url</label>
-                                    <input type="text" name="imgThreeUrl" className="form-control" defaultValue={actor.imgThreeUrl} />
+                                    <input type="text" name="imgThreeUrl" className="form-control" defaultValue={actorInfo.imgThreeUrl} />
                                 </div>
                             </div>
                             <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
@@ -100,7 +100,7 @@ const Edit = () => {
                                 <textarea 
                                 className="form-control" 
                                 rows="5" name="experience" 
-                                defaultValue={actor.experience} 
+                                defaultValue={actorInfo.experience} 
                                 />
                             </div>
                             <div className="text-center">
