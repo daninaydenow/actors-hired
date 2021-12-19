@@ -1,27 +1,25 @@
-import { Route, Routes } from 'react-router';
+import { Route, Routes } from "react-router";
 
-import { AuthProvider } from './contexts/AuthContext';
-import './App.css'
+import { AuthProvider } from "./contexts/AuthContext";
+import "./App.css";
 
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './components/Home';
-import Portfolio from './components/Portfolios';
-import Login from './components/Login';
-import Register from './components/Register';
-import Details from './components/Details';
-import Create from './components/Creeate/Create';
-import Edit from './components/Edit/Edit';
-import Logout from './components/Logout/Logout';
-import Profile from './components/Profile';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./components/Home";
+import Portfolio from "./components/Portfolios";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Details from "./components/Details";
+import Create from "./components/Creeate/Create";
+import Edit from "./components/Edit/Edit";
+import Logout from "./components/Logout/Logout";
+import Profile from "./components/Profile";
 
-import ProtectedRoute from './components/ProtectedRoute';
-import GuestRoute from './components/GuestRoute';
-import UserRoute from './components/UserRoute';
-
+import ProtectedRoute from "./components/ProtectedRoute";
+import GuestRoute from "./components/GuestRoute";
+import UserRoute from "./components/UserRoute";
 
 function App() {
-
   return (
     <AuthProvider>
       <div className="App">
@@ -37,52 +35,63 @@ function App() {
           {/* Private routes */}
           <Route
             path="/profile"
-            element={<ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>}
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
           />
 
           <Route
             path="/logout"
-            element={<ProtectedRoute>
-              <Logout />
-            </ProtectedRoute>}
+            element={
+              <ProtectedRoute>
+                <Logout />
+              </ProtectedRoute>
+            }
           />
 
           <Route
             path="/create"
-            element={<ProtectedRoute>
-              <Create />
-            </ProtectedRoute>}
+            element={
+              <ProtectedRoute>
+                <Create />
+              </ProtectedRoute>
+            }
           />
 
           {/* Guest specific routes */}
           <Route
             path="/login"
-            element={<GuestRoute>
-              <Login />
-            </GuestRoute>}
+            element={
+              <GuestRoute>
+                <Login />
+              </GuestRoute>
+            }
           />
           <Route
             path="/register"
-            element={<GuestRoute>
-              <Register />
-            </GuestRoute>}
+            element={
+              <GuestRoute>
+                <Register />
+              </GuestRoute>
+            }
           />
 
           {/* User specific routes */}
           <Route
             path="/edit/:actorId"
-            element={<UserRoute>
-              <Edit />
-            </UserRoute>}
+            element={
+              <UserRoute>
+                <Edit />
+              </UserRoute>
+            }
           />
         </Routes>
 
         <Footer />
       </div>
     </AuthProvider>
-
   );
 }
 

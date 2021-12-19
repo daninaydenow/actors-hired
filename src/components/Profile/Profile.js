@@ -1,94 +1,102 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-import { useAuth } from '../../contexts/AuthContext';
-import { loadSpinner } from '../../helpers/loadSpinner';
-import * as userService from '../../services/userService';
-import * as actorService from '../../services/actorService';
+import { useAuth } from "../../contexts/AuthContext";
+import { loadSpinner } from "../../helpers/loadSpinner";
+import * as userService from "../../services/userService";
+import * as actorService from "../../services/actorService";
 
-import MissingData from './MissingData';
-import ProfileListItem from './ProfileListItem';
+import MissingData from "./MissingData";
+import ProfileListItem from "./ProfileListItem";
 
-import styles from './Profile.module.css';
+import styles from "./Profile.module.css";
 
 export const Profile = () => {
-    const [myHirings, setMyHirings] = useState([]);
-    const [allPortFolios, setAllPortFolios] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [myHirings, setMyHirings] = useState([]);
+  const [allPortFolios, setAllPortFolios] = useState([]);
+  const [loadingHirings, setLoadingHirings] = useState(true);
+  const [loadingActors, setLoadingActors] = useState(true);
 
-    const { currentUser } = useAuth();
+  const { currentUser } = useAuth();
 
-    useEffect(() => {
-        setTimeout(() => {
-            userService.getUserHirings(currentUser.uid)
-                .then((snapshot) => {
-                    setMyHirings(snapshot.data().hired);
-                });
+  useEffect(() => {
+    setTimeout(() => {
+      userService.getUserHirings(currentUser.uid).then((snapshot) => {
+        setMyHirings(snapshot.data().hired);
+        setLoadingHirings(false);
+      });
 
-            actorService.getAll()
-                .then(snapshot => {
-                    setAllPortFolios(snapshot.docs.map((doc) => ({ ...doc.data(), _id: doc.id })))
-                })
+      actorService.getAll().then((snapshot) => {
+        setAllPortFolios(
+          snapshot.docs.map((doc) => ({ ...doc.data(), _id: doc.id }))
+        );
+        setLoadingActors(false);
+      });
+    }, 1500);
+  }, [currentUser]);
 
-            setLoading(false);
-        }, 1500)
-
-
-    }, [currentUser])
-
-    const populatedMyHirings = [];
-    myHirings.forEach((id) => {
-        allPortFolios.forEach(portfolio => {
-            if (id === portfolio._id) {
-                const actorInfo = { name: portfolio.name, _id: portfolio._id };
-                populatedMyHirings.push(actorInfo);
-            }
-        })
+  const populatedMyHirings = [];
+  myHirings.forEach((id) => {
+    allPortFolios.forEach((portfolio) => {
+      if (id === portfolio._id) {
+        const actorInfo = { name: portfolio.name, _id: portfolio._id };
+        populatedMyHirings.push(actorInfo);
+      }
     });
+  });
 
-    const populatedMyPortfolios = allPortFolios.forEach((portfolio) => portfolio._ownerId === currentUser.uid);
+  const populatedMyPortfolios = allPortFolios.filter(
+    (portfolio) => portfolio._ownerId === currentUser.uid
+  );
 
-    const profile = {
-        alert: "You don't have any portfolios yet!",
-        action: "Create a new portfolio today!",
-        buttonName: "Create",
-        path: "/create"
-    }
+  const profile = {
+    alert: "You don't have any portfolios yet!",
+    action: "Create a new portfolio today!",
+    buttonName: "Create",
+    path: "/create",
+  };
 
-    const hirings = {
-        alert: "You have no hirings yet!",
-        action: "Find the best actor for your performance!",
-        buttonName: "Hire Now",
-        path: "/portfolios"
-    }
+  const hirings = {
+    alert: "You have no hirings yet!",
+    action: "Find the best actor for your performance!",
+    buttonName: "Hire Now",
+    path: "/portfolios",
+  };
 
-    return (
-        <>
-            <h1 className={styles.heading}>My Profile</h1>
-            <div className={`${styles.boxOne} card`}>
-                <h1 className='h1 text-white p-2 '>My Portfolios</h1>
-                <ul className='p-2'>
-                    {loading && loadSpinner}
-                    {loading 
-                    ? ""
-                    : populatedMyPortfolios
-                        ? populatedMyPortfolios.map((x) => <ProfileListItem key={x._id} {...x} />)
-                        : <MissingData {...profile} />
-                    }
-                </ul>
-            </div>
-            <div className={`${styles.boxTwo} card`}>
-                <h1 className='h1 text-white p-2'>My Hirings</h1>
-                <ul className="container-fluid p-2">
-                    {loading && loadSpinner}
-                    {loading 
-                    ? ""
-                    : populatedMyHirings
-                        ? populatedMyHirings.map((x) => <ProfileListItem key={x._id} {...x} />)
-                        : <MissingData {...hirings} />}
-                </ul>
-            </div>
-        </>
-    )
-}
+  return (
+    <>
+      <h1 className={styles.heading}>My Profile</h1>
+      <div className={`${styles.boxOne} card`}>
+        <h1 className="h1 text-white p-2 ">My Portfolios</h1>
+        <ul className="p-2">
+          {loadingActors && loadSpinner}
+          {loadingActors ? (
+            ""
+          ) : populatedMyPortfolios.length !== 0 ? (
+            populatedMyPortfolios.map((x) => (
+              <ProfileListItem key={x._id} {...x} />
+            ))
+          ) : (
+            <MissingData {...profile} />
+          )}
+        </ul>
+      </div>
+      <div className={`${styles.boxTwo} card`}>
+        <h1 className="h1 text-white p-2">My Hirings</h1>
+        <ul className="container-fluid p-2">
+          {loadingHirings && loadSpinner}
+          {loadingHirings ? (
+            ""
+          ) : populatedMyHirings.length !== 0 ? (
+            populatedMyHirings.map((x) => (
+              <ProfileListItem key={x._id} {...x} />
+            ))
+          ) : (
+            <MissingData {...hirings} />
+          )}
+        </ul>
+      </div>
+    </>
+  );
+};
 
 export default Profile;
