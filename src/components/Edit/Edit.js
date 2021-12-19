@@ -1,50 +1,50 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
+import { validate } from "../../helpers/formValidator";
 import * as actorService from "../../services/actorService";
 
 import styles from "./Edit.module.css";
 const Edit = () => {
   const navigate = useNavigate();
-  const [actorInfo, setActorInfo] = useState({});
+  const [formValues, setFormValues] = useState([]);
+  const [formErrors, setFormErrors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const { actorId } = useParams();
 
   useEffect(() => {
     setTimeout(() => {
-      actorService.getOne(actorId).then((snapshot) => {
-        setActorInfo(snapshot.data());
-        setLoading(false);
-      });
+      if (formValues.length === 0) {
+        actorService.getOne(actorId).then((snapshot) => {
+          setFormValues(snapshot.data());
+          setLoading(false);
+        });
+      }
+
+      if (Object.keys(formErrors).length === 0 && isSubmit) {
+        actorService
+          .update(actorId, formValues)
+          .then(() => {
+            navigate(`/details/${actorId}`);
+          })
+          .catch((error) => {});
+      }
     }, 1000);
-  }, [actorId]);
+  }, [actorId, formErrors, formValues, isSubmit, navigate]);
 
   const editPortfolioHandler = (e) => {
     e.preventDefault();
-    let {
-      profImgUrl,
-      name,
-      genre,
-      imgOneUrl,
-      imgTwoUrl,
-      imgThreeUrl,
-      experience,
-    } = Object.fromEntries(new FormData(e.currentTarget));
-    actorService
-      .update(actorId, {
-        profImgUrl,
-        name,
-        genre,
-        imgOneUrl,
-        imgTwoUrl,
-        imgThreeUrl,
-        experience,
-      })
-      .then(() => {
-        navigate(`/details/${actorId}`);
-      })
-      .catch((error) => {});
+    setFormErrors(validate(formValues));
+    setIsSubmit(true);
+  };
+
+  const onChangeHandler = (e) => {
+    console.log(formValues);
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+    setIsSubmit(false);
   };
 
   const loadButton = (
@@ -76,8 +76,10 @@ const Edit = () => {
                   type="text"
                   name="profImgUrl"
                   className="form-control"
-                  defaultValue={actorInfo.profImgUrl}
+                  value={formValues.profImgUrl}
+                  onChange={onChangeHandler}
                 />
+                <span className="text-danger">{formErrors.profImgUrl}</span>
               </div>
               <div
                 className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}
@@ -89,8 +91,10 @@ const Edit = () => {
                   type="text"
                   name="name"
                   className="form-control"
-                  defaultValue={actorInfo.name}
+                  value={formValues.name}
+                  onChange={onChangeHandler}
                 />
+                <span className="text-danger">{formErrors.name}</span>
               </div>
               <div
                 className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}
@@ -102,8 +106,10 @@ const Edit = () => {
                   type="text"
                   name="genre"
                   className="form-control"
-                  defaultValue={actorInfo.genre}
+                  value={formValues.genre}
+                  onChange={onChangeHandler}
                 />
+                <span className="text-danger">{formErrors.genre}</span>
               </div>
             </div>
           </div>
@@ -116,8 +122,10 @@ const Edit = () => {
                     type="text"
                     name="imgOneUrl"
                     className="form-control"
-                    defaultValue={actorInfo.imgOneUrl}
+                    value={formValues.imgOneUrl}
+                    onChange={onChangeHandler}
                   />
+                  <span className="text-danger">{formErrors.imgOneUrl}</span>
                 </div>
                 <div className={`${styles.imgUrl} mt-3`}>
                   <label htmlFor="imgTwoUrl">Image 2 Url</label>
@@ -125,8 +133,10 @@ const Edit = () => {
                     type="text"
                     name="imgTwoUrl"
                     className="form-control"
-                    defaultValue={actorInfo.imgTwoUrl}
+                    value={formValues.imgTwoUrl}
+                    onChange={onChangeHandler}
                   />
+                  <span className="text-danger">{formErrors.imgTwoUrl}</span>
                 </div>
                 <div className={`${styles.imgUrl} mt-3`}>
                   <label htmlFor="imgThreeUrl">Image 3 Url</label>
@@ -134,8 +144,10 @@ const Edit = () => {
                     type="text"
                     name="imgThreeUrl"
                     className="form-control"
-                    defaultValue={actorInfo.imgThreeUrl}
+                    value={formValues.imgThreeUrl}
+                    onChange={onChangeHandler}
                   />
+                  <span className="text-danger">{formErrors.imgThreeUrl}</span>
                 </div>
               </div>
               <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
@@ -146,8 +158,10 @@ const Edit = () => {
                   className="form-control"
                   rows="5"
                   name="experience"
-                  defaultValue={actorInfo.experience}
+                  value={formValues.experience}
+                  onChange={onChangeHandler}
                 />
+                <span className="text-danger">{formErrors.experience}</span>
               </div>
               <div className="text-center">
                 {loading ? (
