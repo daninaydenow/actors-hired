@@ -1,21 +1,19 @@
-import { useEffect } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
-import * as actorService from '../../services/actorService';
-
 const UserRoute = ({ children }) => {
-    const {currentUser} = useAuth();
-    const {portFolioId} = useParams();
-    let userPortfolios = [];
-    useEffect(() => {
-        actorService.getAll()
-        .then(snapshot => {
-            userPortfolios = snapshot.docs.map((doc) => ({_id: doc.id })).filter(x => x._ownerId === currentUser?.uid);
-        })
-    })
+  const { currentUser } = useAuth();
+  const location = useLocation();
 
-    return userPortfolios.includes(portFolioId) ? children : <Navigate to="/"/>
-}
+  if (!currentUser || !location.state) {
+    return <Navigate to="/login" />;
+  }
+
+  return currentUser?.uid === location.state.ownerId ? (
+    children
+  ) : (
+    <Navigate to="/" />
+  );
+};
 
 export default UserRoute;
