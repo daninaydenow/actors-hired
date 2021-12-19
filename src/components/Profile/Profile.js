@@ -45,7 +45,7 @@ export const Profile = () => {
         })
     });
 
-    const populatedMyPortfolios = allPortFolios.filter((x) => x._ownerId === currentUser.uid);
+    const populatedMyPortfolios = allPortFolios.forEach((portfolio) => portfolio._ownerId === currentUser.uid);
 
     const profile = {
         alert: "You don't have any portfolios yet!",
@@ -68,7 +68,9 @@ export const Profile = () => {
                 <h1 className='h1 text-white p-2 '>My Portfolios</h1>
                 <ul className='p-2'>
                     {loading && loadSpinner}
-                    {populatedMyPortfolios || loading
+                    {loading 
+                    ? ""
+                    : populatedMyPortfolios
                         ? populatedMyPortfolios.map((x) => <ProfileListItem key={x._id} {...x} />)
                         : <MissingData {...profile} />
                     }
@@ -78,7 +80,9 @@ export const Profile = () => {
                 <h1 className='h1 text-white p-2'>My Hirings</h1>
                 <ul className="container-fluid p-2">
                     {loading && loadSpinner}
-                    {populatedMyHirings || loading
+                    {loading 
+                    ? ""
+                    : populatedMyHirings
                         ? populatedMyHirings.map((x) => <ProfileListItem key={x._id} {...x} />)
                         : <MissingData {...hirings} />}
                 </ul>
