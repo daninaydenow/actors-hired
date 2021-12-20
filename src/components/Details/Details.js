@@ -85,9 +85,14 @@ const Details = () => {
     <>
       <div className={`${styles.box} text-center`}>
         {isIncludedInUserHirings ? (
-          <span class="badge rounded-pill bg-success mt-5">
-            You've already hired this actor!
-          </span>
+          <>
+            <span class="badge rounded-pill bg-success mt-3">
+              You've already hired this actor!
+            </span>
+            <div>
+              <button className="btn btn-danger mt-2">Unhire</button>
+            </div>
+          </>
         ) : (
           <button className={`btn btn-warning mt-5`} onClick={hireActorHandler}>
             Hire Actor!
