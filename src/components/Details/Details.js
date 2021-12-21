@@ -78,21 +78,28 @@ const Details = () => {
   };
 
   const ownerButtons = (
-    <div className={`${styles.boxtwo} text-center`}>
-      <Link
-        to={`/edit/${actorId}`}
-        state={{ ownerId: actor._ownerId }}
-        className={"btn btn-warning mt-5 me-3"}
+    <>
+      <div className={`${styles.boxtwo} text-center`}>
+        <Link
+          to={`/edit/${actorId}`}
+          state={{ ownerId: actor._ownerId }}
+          className={"btn btn-warning mt-5 me-3"}
+        >
+          Edit
+        </Link>
+        <button
+          className={"btn btn-danger mt-5 me-2"}
+          onClick={deletePortfolioHandler}
+        >
+          Delete
+        </button>
+      </div>
+      <div
+        className={`${styles.boxthree} d-flex justify-content-center align-items-center text-center`}
       >
-        Edit
-      </Link>
-      <button
-        className={"btn btn-danger mt-5 me-2"}
-        onClick={deletePortfolioHandler}
-      >
-        Delete
-      </button>
-    </div>
+        <p className={"mt-5"}>Likes: {likes?.length} </p>
+      </div>
+    </>
   );
 
   const userButtons = (
