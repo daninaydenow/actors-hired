@@ -1,6 +1,3 @@
-
-
-
 // export const login = (email, password) => {
 //     const endPoint = '/users/login';
 //     return requester(endPoint, "POST", {email, password}, null)

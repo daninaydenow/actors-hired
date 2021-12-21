@@ -7,7 +7,6 @@ import {
   doc,
   updateDoc,
   deleteDoc,
-  deleteField,
 } from "firebase/firestore";
 
 const portfoliosCollectionRef = collection(db, "portfolios");
