@@ -205,7 +205,7 @@ const Details = () => {
             </div>
             <div>
               {loadingActor && loadSpinner}
-              {loadingActor || loadingUserHirings
+              {loadingActor && loadingUserHirings
                 ? ""
                 : currentUser
                 ? isOwner
