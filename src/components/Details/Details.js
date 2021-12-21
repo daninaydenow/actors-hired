@@ -100,7 +100,7 @@ const Details = () => {
       <div className={`${styles.box} text-center`}>
         {isIncludedInUserHirings ? (
           <>
-            <span class="badge rounded-pill bg-success mt-3">
+            <span className="badge rounded-pill bg-success mt-3">
               You've already hired this actor!
             </span>
             <div>
