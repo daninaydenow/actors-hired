@@ -63,6 +63,20 @@ const Details = () => {
     });
   };
 
+  const unhireActorHandler = () => {
+    const portfolioIndex = userHirings.indexOf(actorId);
+    const newUserHiringsRef = userHirings.slice();
+    newUserHiringsRef.splice(portfolioIndex, 1);
+    actorService
+      .unhire(currentUser.uid, newUserHiringsRef)
+      .then(() => {
+        setUserHirings(newUserHiringsRef);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const ownerButtons = (
     <div className={`${styles.boxtwo} text-center`}>
       <Link
@@ -90,7 +104,12 @@ const Details = () => {
               You've already hired this actor!
             </span>
             <div>
-              <button className="btn btn-danger mt-2">Unhire</button>
+              <button
+                className="btn btn-danger mt-2"
+                onClick={unhireActorHandler}
+              >
+                Unhire
+              </button>
             </div>
           </>
         ) : (
