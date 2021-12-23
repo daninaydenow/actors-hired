@@ -17,10 +17,15 @@ const Edit = () => {
   useEffect(() => {
     setTimeout(() => {
       if (formValues.length === 0) {
-        actorService.getOne(actorId).then((snapshot) => {
-          setFormValues(snapshot.data());
-          setLoading(false);
-        });
+        actorService
+          .getOne(actorId)
+          .then((snapshot) => {
+            setFormValues(snapshot.data());
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
 
       if (Object.keys(formErrors).length === 0 && isSubmit) {
@@ -29,7 +34,9 @@ const Edit = () => {
           .then(() => {
             navigate(`/details/${actorId}`);
           })
-          .catch((error) => {});
+          .catch((error) => {
+            console.log(error);
+          });
       }
     }, 1000);
   }, [actorId, formErrors, formValues, isSubmit, navigate]);

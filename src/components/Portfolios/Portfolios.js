@@ -10,12 +10,17 @@ const Portfolios = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      actorService.getAll().then((snapshot) => {
-        setPortfolios(
-          snapshot.docs.map((doc) => ({ ...doc.data(), _id: doc.id }))
-        );
-        setLoading(false);
-      });
+      actorService
+        .getAll()
+        .then((snapshot) => {
+          setPortfolios(
+            snapshot.docs.map((doc) => ({ ...doc.data(), _id: doc.id }))
+          );
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }, 1000);
   }, []);
 

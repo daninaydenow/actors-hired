@@ -20,18 +20,28 @@ export const Profile = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      userService.getUserHirings(currentUser.uid).then((snapshot) => {
-        setMyHirings(snapshot.data().hired);
-        setLoadingHirings(false);
-      });
+      userService
+        .getUserHirings(currentUser.uid)
+        .then((snapshot) => {
+          setMyHirings(snapshot.data().hired);
+          setLoadingHirings(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
-      actorService.getAll().then((snapshot) => {
-        setAllPortFolios(
-          snapshot.docs.map((doc) => ({ ...doc.data(), _id: doc.id }))
-        );
-        setLoadingActors(false);
-      });
-    }, 1500);
+      actorService
+        .getAll()
+        .then((snapshot) => {
+          setAllPortFolios(
+            snapshot.docs.map((doc) => ({ ...doc.data(), _id: doc.id }))
+          );
+          setLoadingActors(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 1000);
   }, [currentUser]);
 
   const populatedMyHirings = [];

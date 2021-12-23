@@ -22,17 +22,27 @@ const Details = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      actorService.getOne(actorId).then((snapshot) => {
-        setActor(snapshot.data());
-        setLikes(snapshot.data().likes);
-        setLoadingActor(false);
-      });
+      actorService
+        .getOne(actorId)
+        .then((snapshot) => {
+          setActor(snapshot.data());
+          setLikes(snapshot.data().likes);
+          setLoadingActor(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       if (currentUser) {
-        userService.getUserHirings(currentUser.uid).then((snapshot) => {
-          setUserHirings(snapshot.data().hired);
-          setLoadingUserHirings(false);
-        });
+        userService
+          .getUserHirings(currentUser.uid)
+          .then((snapshot) => {
+            setUserHirings(snapshot.data().hired);
+            setLoadingUserHirings(false);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     }, 500);
   }, [actorId, currentUser, alreadyHired]);
@@ -42,25 +52,40 @@ const Details = () => {
   const isOwner = currentUser?.uid === actor._ownerId;
 
   const deletePortfolioHandler = (e) => {
-    actorService.remove(actorId).then(() => {
-      navigate("/portfolios");
-    });
+    actorService
+      .remove(actorId)
+      .then(() => {
+        navigate("/portfolios");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const likePortfolioHandler = () => {
     const addedLikes = likes.slice();
     addedLikes.push(currentUser.uid);
-    actorService.update(actorId, { likes: addedLikes }).then(() => {
-      setLikes(addedLikes);
-    });
+    actorService
+      .update(actorId, { likes: addedLikes })
+      .then(() => {
+        setLikes(addedLikes);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const hireActorHandler = () => {
     const hiredNewActor = userHirings.slice();
     hiredNewActor.push(actorId);
-    actorService.hire(currentUser.uid, hiredNewActor).then(() => {
-      setAlreadyHired(true);
-    });
+    actorService
+      .hire(currentUser.uid, hiredNewActor)
+      .then(() => {
+        setAlreadyHired(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const unhireActorHandler = () => {

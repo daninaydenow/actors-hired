@@ -27,12 +27,6 @@ const Login = () => {
             ...formErrors,
             password: "Incorrect username or password!",
           });
-          // if (error.code === "auth/wrong-password") {
-          //   setFormErrors({ ...formErrors, password: "Incorrect Password!" });
-          // }
-          // if (error.code === "auth/user-not-found") {
-          //   setFormErrors({ ...formErrors, email: "Incorrect Email!" });
-          // }
         });
     }
   }, [formErrors, isSubmit, formValues, login, navigate]);

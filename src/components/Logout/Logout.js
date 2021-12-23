@@ -7,7 +7,11 @@ const Logout = () => {
   const { logout } = useAuth();
 
   useEffect(() => {
-    logout().then(() => navigate("/"));
+    logout()
+      .then(() => navigate("/"))
+      .catch((error) => {
+        console.log(error);
+      });
   }, [logout, navigate]);
 
   return null;

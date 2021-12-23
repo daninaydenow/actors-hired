@@ -18,6 +18,7 @@ import Profile from "./components/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import GuestRoute from "./components/GuestRoute";
 import UserRoute from "./components/UserRoute";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/portfolios" element={<Portfolio />} />
           <Route path="/details/:actorId" element={<Details />} />
+          <Route path="*" element={<NotFound />} />
 
           {/* Private routes */}
           <Route
