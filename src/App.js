@@ -33,7 +33,14 @@ function App() {
           {/* Routes accessible for all types of users */}
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/portfolios" element={<Portfolio />} />
+          <Route
+            path="/portfolios"
+            element={
+              <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <Portfolio />
+              </ErrorBoundary>
+            }
+          />
           <Route
             path="/details/:actorId"
             element={
@@ -49,7 +56,9 @@ function App() {
             path="/profile"
             element={
               <ProtectedRoute>
-                <Profile />
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                  <Profile />
+                </ErrorBoundary>
               </ProtectedRoute>
             }
           />
@@ -58,7 +67,10 @@ function App() {
             path="/logout"
             element={
               <ProtectedRoute>
-                <Logout />
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                  {" "}
+                  <Logout />
+                </ErrorBoundary>
               </ProtectedRoute>
             }
           />
@@ -67,7 +79,9 @@ function App() {
             path="/create"
             element={
               <ProtectedRoute>
-                <Create />
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                  <Create />
+                </ErrorBoundary>
               </ProtectedRoute>
             }
           />
@@ -77,7 +91,9 @@ function App() {
             path="/login"
             element={
               <GuestRoute>
-                <Login />
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                  <Login />
+                </ErrorBoundary>
               </GuestRoute>
             }
           />
@@ -85,7 +101,9 @@ function App() {
             path="/register"
             element={
               <GuestRoute>
-                <Register />
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                  <Register />
+                </ErrorBoundary>
               </GuestRoute>
             }
           />
@@ -95,7 +113,9 @@ function App() {
             path="/edit/:actorId"
             element={
               <UserRoute>
-                <Edit />
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                  <Edit />
+                </ErrorBoundary>
               </UserRoute>
             }
           />
