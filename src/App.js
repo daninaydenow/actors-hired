@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router";
 
+import { ErrorBoundary } from "react-error-boundary";
+
 import { AuthProvider } from "./contexts/AuthContext";
 import "./App.css";
 
@@ -19,6 +21,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import GuestRoute from "./components/GuestRoute";
 import UserRoute from "./components/UserRoute";
 import NotFound from "./components/NotFound";
+import ErrorFallback from "./components/ErrorFallback";
 
 function App() {
   return (
@@ -31,7 +34,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/portfolios" element={<Portfolio />} />
-          <Route path="/details/:actorId" element={<Details />} />
+          <Route
+            path="/details/:actorId"
+            element={
+              <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <Details />
+              </ErrorBoundary>
+            }
+          />
           <Route path="*" element={<NotFound />} />
 
           {/* Private routes */}
