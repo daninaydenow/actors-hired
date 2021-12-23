@@ -26,78 +26,102 @@ import ErrorFallback from "./components/ErrorFallback";
 function App() {
   return (
     <AuthProvider>
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <div className="App">
-          <Navbar />
+      <div className="App">
+        <Navbar />
 
-          <Routes>
-            {/* Routes accessible for all types of users */}
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/portfolios" element={<Portfolio />} />
-            <Route path="/details/:actorId" element={<Details />} />
-            <Route path="*" element={<NotFound />} />
+        <Routes>
+          {/* Routes accessible for all types of users */}
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route
+            path="/portfolios"
+            element={
+              <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <Portfolio />
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="/details/:actorId"
+            element={
+              <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <Details />
+              </ErrorBoundary>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
 
-            {/* Private routes */}
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
+          {/* Private routes */}
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
                   <Profile />
-                </ProtectedRoute>
-              }
-            />
+                </ErrorBoundary>
+              </ProtectedRoute>
+            }
+          />
 
-            <Route
-              path="/logout"
-              element={
-                <ProtectedRoute>
+          <Route
+            path="/logout"
+            element={
+              <ProtectedRoute>
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
                   <Logout />
-                </ProtectedRoute>
-              }
-            />
+                </ErrorBoundary>
+              </ProtectedRoute>
+            }
+          />
 
-            <Route
-              path="/create"
-              element={
-                <ProtectedRoute>
+          <Route
+            path="/create"
+            element={
+              <ProtectedRoute>
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
                   <Create />
-                </ProtectedRoute>
-              }
-            />
+                </ErrorBoundary>
+              </ProtectedRoute>
+            }
+          />
 
-            {/* Guest specific routes */}
-            <Route
-              path="/login"
-              element={
-                <GuestRoute>
+          {/* Guest specific routes */}
+          <Route
+            path="/login"
+            element={
+              <GuestRoute>
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
                   <Login />
-                </GuestRoute>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <GuestRoute>
+                </ErrorBoundary>
+              </GuestRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <GuestRoute>
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
                   <Register />
-                </GuestRoute>
-              }
-            />
+                </ErrorBoundary>
+              </GuestRoute>
+            }
+          />
 
-            {/* User specific routes */}
-            <Route
-              path="/edit/:actorId"
-              element={
-                <UserRoute>
+          {/* User specific routes */}
+          <Route
+            path="/edit/:actorId"
+            element={
+              <UserRoute>
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
                   <Edit />
-                </UserRoute>
-              }
-            />
-          </Routes>
+                </ErrorBoundary>
+              </UserRoute>
+            }
+          />
+        </Routes>
 
-          <Footer />
-        </div>
-      </ErrorBoundary>
+        <Footer />
+      </div>
     </AuthProvider>
   );
 }
