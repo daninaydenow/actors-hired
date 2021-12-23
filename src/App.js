@@ -68,7 +68,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <ErrorBoundary FallbackComponent={ErrorFallback}>
-                  {" "}
                   <Logout />
                 </ErrorBoundary>
               </ProtectedRoute>
