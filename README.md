@@ -10,3 +10,9 @@ React JS Project for SoftUni React course
 - Boostrap 5
 - Firebase
 - Firestore
+
+## Functionallity
+
+- Guest users can view all portfolios created.
+- Logged users extend functionallity with the ability to create/edit/delete and like portfolios.
+- Potfolio owners have access to their personal portfolios and porftolios they "hired" through profile page.
