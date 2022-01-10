@@ -1,4 +1,4 @@
-# Actors-Hired - [acotrs-hired.firebaseapp.com/](acotrs-hired.firebaseapp.com/)
+# Actors-Hired - [acotrs-hired.firebaseapp.com](acotrs-hired.firebaseapp.com)
 
 React JS Project for SoftUni React course
 
