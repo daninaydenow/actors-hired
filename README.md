@@ -1,8 +1,8 @@
-# ACtors-Hired - [acotrs-hired.firebaseapp.com](acotrs-hired.firebaseapp.com)
+# Actors-Hired - [acotrs-hired.firebaseapp.com/](acotrs-hired.firebaseapp.com/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React JS Project for SoftUni React course
 
-## Available Scripts
+## Technologies used:
 
 In the project directory, you can run:
 
