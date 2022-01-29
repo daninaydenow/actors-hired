@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
-import styles from "./PortfolioCard.module.css";
+import "./PortfolioCard.css";
 
 const PortfolioCard = ({ profImgUrl, name, _id: actorId }) => {
   return (
     <>
-      <div className={`${styles.style} card`}>
+      <div class="card">
+        <div class="img-container">
+          <img src={profImgUrl} class="card-img" alt={profImgUrl} />
+        </div>
+        <div class="card-body">
+          <h4>{name}</h4>
+          <p>26</p>
+          <Link to={`/details/${actorId}`}>
+            <i class="fas fa-angle-double-right"></i>
+          </Link>
+        </div>
+      </div>
+      {/* <div className={`${styles.style} card`}>
         <img
           src={profImgUrl}
           className={`${styles.imgsize} card-img-top`}
@@ -16,7 +28,7 @@ const PortfolioCard = ({ profImgUrl, name, _id: actorId }) => {
             View Portfolio
           </Link>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

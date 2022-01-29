@@ -1,0 +1,18 @@
+.cards-wrapper {
+  width: 950px;
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  background-color: #e6e6e6;
+}
+
+@media screen and (max-width: 499px) {
+  .cards-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

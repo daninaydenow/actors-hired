@@ -3,7 +3,7 @@ import PortfolioCard from "./PortfolioCard";
 
 import * as actorService from "../../services/actorService";
 import { loadSpinner } from "../../helpers/loadSpinner";
-import styles from "./Portfolios.module.css";
+import "./Portfolios.css";
 const Portfolios = () => {
   const [portfolios, setPortfolios] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,8 +26,7 @@ const Portfolios = () => {
 
   return (
     <>
-      <h1 className="text-light mb-3 pb-5">Browse Portfolios</h1>
-      <div className={styles.flex}>
+      <div className="cards-wrapper">
         {loading && loadSpinner}
         {loading ? (
           ""
