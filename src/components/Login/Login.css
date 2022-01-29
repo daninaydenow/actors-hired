@@ -1,9 +1,11 @@
 @media screen and (max-width: 500px) {
-  .login-form .actions .login {
-    margin-left: 100px;
+  .login {
+    margin: 0;
     padding: 0;
+    margin-left: 100px;
   }
-  .login-form .actions .register {
+  .register {
+    margin: 0;
     margin-left: 150px;
   }
 }

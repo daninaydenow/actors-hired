@@ -86,11 +86,7 @@ const Register = () => {
         </section>
         <section>
           <div className="register-actions">
-            <button
-              type="submit"
-              className="btn register"
-              onClick={registerHandler}
-            >
+            <button type="submit" className="btn reg" onClick={registerHandler}>
               <i className="fas fa-user-plus"></i>
               <span className="hide">Register</span>
             </button>
@@ -98,7 +94,7 @@ const Register = () => {
             <div className="question">
               <small>Already have an account ?</small>
             </div>
-            <Link to="/login" className="btn login">
+            <Link to="/login" className="btn log">
               <i className="fas fa-sign-in-alt"></i>
               <span className="hide">Login</span>
             </Link>

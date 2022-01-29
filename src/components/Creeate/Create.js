@@ -131,7 +131,8 @@ const Create = () => {
         </div>
         <div className="create-actions">
           <button type="submit" className="btn">
-            <i className="far fa-plus-square"></i>Create
+            <i className="far fa-plus-square"></i>
+            <span className="hide">Create</span>
           </button>
         </div>
       </form>
