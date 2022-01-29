@@ -44,12 +44,12 @@ const Login = () => {
 
   return (
     <>
-      <form class="login-form" method="POST" onSubmit={loginHandler}>
-        <div class="form-heading">
+      <form className="login-form" method="POST" onSubmit={loginHandler}>
+        <div className="form-heading">
           <h1>Login</h1>
         </div>
-        <section class="credentials-section">
-          <div class="inputs-container">
+        <section className="credentials-section">
+          <div className="inputs-container">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -59,7 +59,7 @@ const Login = () => {
               onChange={onChangeHandler}
             />
           </div>
-          <div class="inputs-container">
+          <div className="inputs-container">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -71,17 +71,17 @@ const Login = () => {
           </div>
         </section>
         <section>
-          <div class="actions">
+          <div className="login-actions">
             <button type="submit" className="btn login">
-              <i class="fas fa-sign-in-alt"></i>
-              <span class="hide">Login</span>
+              <i className="fas fa-sign-in-alt"></i>
+              <span className="hide">Login</span>
             </button>
             <div className="question">
               <small>Don't have an account ?</small>
             </div>
             <Link to="/register" className="btn register">
-              <i class="fas fa-user-plus"></i>
-              <span class="hide">Register</span>
+              <i className="fas fa-user-plus"></i>
+              <span className="hide">Register</span>
             </Link>
           </div>
         </section>

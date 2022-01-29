@@ -55,7 +55,7 @@
   font-size: x-large;
 }
 
-.actions {
+.login-actions {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,7 +65,7 @@
   color: #b0b3b8;
 }
 
-.actions .btn {
+.login-actions .btn {
   background-color: transparent;
   font-size: 2rem;
   border: none;
@@ -83,7 +83,7 @@
   margin: 1rem;
 }
 
-.actions .btn:hover {
+.login-actions .btn:hover {
   color: white;
   cursor: pointer;
   /* background-color: #1da1f2; */
