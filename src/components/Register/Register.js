@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 
 import { validate } from "../../helpers/formValidator";
 import * as userService from "../../services/userService";
-import styles from "./Register.module.css";
+import "./Register.css";
 
 const initialValues = { email: "", password: "", rePassword: "" };
 
@@ -47,77 +47,133 @@ const Register = () => {
   };
 
   return (
-    <section id="register-page" className={styles.form}>
-      <form className="card-body" method="POST" onSubmit={registerHandler}>
-        <div className={styles.container}>
-          <legend>Register</legend>
-          <div className={`${styles.row} + mb-3 row`}>
-            <label htmlFor="staticEmail" className="col-sm-2 col-form-label">
-              Email
-            </label>
-            <div className="col-sm-10">
-              <input
-                type="text"
-                className="form-control"
-                id="email"
-                name="email"
-                value={formValues.email}
-                onChange={onChangeHandler}
-              />
-            </div>
-            <span className="mt-2 text-danger">{formErrors.email}</span>
-          </div>
-          <div className={`${styles.row} + mb-3 row`}>
-            <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
-              Password
-            </label>
-            <div className="col-sm-10">
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                name="password"
-                value={formValues.password}
-                onChange={onChangeHandler}
-              />
-            </div>
-            <span className="mt-2 text-danger">{formErrors.password}</span>
-          </div>
-          <div className={`${styles.row} + mb-3 row`}>
-            <label
-              htmlFor="inputRepeatPassword"
-              className="col-sm-2 col-form-label"
-            >
-              Confirm Password
-            </label>
-            <div className="col-sm-10">
-              <input
-                type="password"
-                className="form-control"
-                id="rePassword"
-                name="rePassword"
-                value={formValues.rePassword}
-                onChange={onChangeHandler}
-              />
-            </div>
-            <span className="text-danger">{formErrors.rePassword}</span>
-          </div>
-          <div>
-            <button type="submit" className="btn btn-danger">
-              Register
-            </button>
-          </div>
-          <div className={`${styles.row} mb-3 row`}>
-            <p className={styles.row}>Already have an account ?</p>
-            <div>
-              <Link to="/login" className={styles.row}>
-                Sign in!
-              </Link>
-            </div>
-          </div>
+    <>
+      <form class="register-form">
+        <div class="form-heading">
+          <h1>Register</h1>
         </div>
+        <section class="credentials-section">
+          <div class="inputs-container">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={formValues.email}
+              onChange={onChangeHandler}
+            />
+          </div>
+          <div class="inputs-container">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={formValues.password}
+              onChange={onChangeHandler}
+            />
+          </div>
+          <div class="inputs-container">
+            <label htmlFor="rePassword">Repeat Password</label>
+            <input
+              type="password"
+              name="rePassword"
+              id="rePassword"
+              value={formValues.rePassword}
+              onChange={onChangeHandler}
+            />
+          </div>
+        </section>
+        <section>
+          <div class="actions">
+            <button type="submit" className="btn register">
+              <i class="fas fa-user-plus"></i>
+              <span class="hide">Register</span>
+            </button>
+
+            <div className="question">
+              <small>Already have an account ?</small>
+            </div>
+            <Link to="/login" className="btn login">
+              <i class="fas fa-sign-in-alt"></i>
+              <span class="hide">Login</span>
+            </Link>
+          </div>
+        </section>
       </form>
-    </section>
+    </>
+
+    // <section id="register-page" className={styles.form}>
+    //   <form className="card-body" method="POST" onSubmit={registerHandler}>
+    //     <div className={styles.container}>
+    //       <legend>Register</legend>
+    //       <div className={`${styles.row} + mb-3 row`}>
+    //         <label htmlFor="staticEmail" className="col-sm-2 col-form-label">
+    //           Email
+    //         </label>
+    //         <div className="col-sm-10">
+    //           <input
+    //             type="text"
+    //             className="form-control"
+    //             id="email"
+    //             name="email"
+    //             value={formValues.email}
+    //             onChange={onChangeHandler}
+    //           />
+    //         </div>
+    //         <span className="mt-2 text-danger">{formErrors.email}</span>
+    //       </div>
+    //       <div className={`${styles.row} + mb-3 row`}>
+    //         <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
+    //           Password
+    //         </label>
+    //         <div className="col-sm-10">
+    //           <input
+    //             type="password"
+    //             className="form-control"
+    //             id="password"
+    //             name="password"
+    //             value={formValues.password}
+    //             onChange={onChangeHandler}
+    //           />
+    //         </div>
+    //         <span className="mt-2 text-danger">{formErrors.password}</span>
+    //       </div>
+    //       <div className={`${styles.row} + mb-3 row`}>
+    //         <label
+    //           htmlFor="inputRepeatPassword"
+    //           className="col-sm-2 col-form-label"
+    //         >
+    //           Confirm Password
+    //         </label>
+    //         <div className="col-sm-10">
+    //           <input
+    //             type="password"
+    //             className="form-control"
+    //             id="rePassword"
+    //             name="rePassword"
+    //             value={formValues.rePassword}
+    //             onChange={onChangeHandler}
+    //           />
+    //         </div>
+    //         <span className="text-danger">{formErrors.rePassword}</span>
+    //       </div>
+    //       <div>
+    //         <button type="submit" className="btn btn-danger">
+    //           Register
+    //         </button>
+    //       </div>
+    //       <div className={`${styles.row} mb-3 row`}>
+    //         <p className={styles.row}>Already have an account ?</p>
+    //         <div>
+    //           <Link to="/login" className={styles.row}>
+    //             Sign in!
+    //           </Link>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </form>
+    // </section>
   );
 };
 

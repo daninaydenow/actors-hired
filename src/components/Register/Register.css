@@ -1,14 +1,14 @@
 @media screen and (max-width: 500px) {
-  .login-form .actions .login {
-    margin-left: 100px;
+  .register-form .actions .login {
+    margin-left: 90px;
     padding: 0;
   }
-  .login-form .actions .register {
-    margin-left: 150px;
+  .register-form .actions .register {
+    margin-left: 140px;
   }
 }
 
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
