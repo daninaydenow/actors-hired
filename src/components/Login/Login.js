@@ -5,7 +5,7 @@ import { useAuth } from "../../contexts/AuthContext";
 
 import { validate } from "../../helpers/formValidator";
 
-import styles from "./Login.module.css";
+import "./Login.css";
 
 const initialFormValues = { email: "", password: "" };
 
@@ -44,7 +44,49 @@ const Login = () => {
 
   return (
     <>
-      <section className={styles.form}>
+      <form class="login-form" method="POST" onSubmit={loginHandler}>
+        <div class="form-heading">
+          <h1>Login</h1>
+        </div>
+        <section class="credentials-section">
+          <div class="inputs-container">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={formValues.email}
+              onChange={onChangeHandler}
+            />
+          </div>
+          <div class="inputs-container">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={formValues.password}
+              onChange={onChangeHandler}
+            />
+          </div>
+        </section>
+        <section>
+          <div class="actions">
+            <button type="submit" className="btn login">
+              <i class="fas fa-sign-in-alt"></i>
+              <span class="hide">Login</span>
+            </button>
+            <div className="question">
+              <small>Don't have an account ?</small>
+            </div>
+            <Link to="/register" className="btn register">
+              <i class="fas fa-user-plus"></i>
+              <span class="hide">Register</span>
+            </Link>
+          </div>
+        </section>
+      </form>
+      {/* <section className={styles.form}>
         <form className="card-body" method="POST" onSubmit={loginHandler}>
           <div className={styles.container}>
             <legend>Login</legend>
@@ -98,7 +140,7 @@ const Login = () => {
             </div>
           </div>
         </form>
-      </section>
+      </section>  */}
     </>
   );
 };

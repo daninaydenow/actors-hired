@@ -128,8 +128,6 @@ function App() {
             }
           />
         </Routes>
-
-        <Footer />
       </div>
     </AuthProvider>
   );
