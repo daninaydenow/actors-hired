@@ -6,24 +6,22 @@ const Navbar = () => {
 
   const userNavigation = (
     <>
-      <li className="nav-item">
-        <Link className="nav-link" to="/create">
-          Create Portfolio
+      <li>
+        <Link to="/create">
+          <i class="far fa-plus-square"></i>
+          <span class="hide">Create</span>
         </Link>
       </li>
       <li>
-        <Link to="/profile" className="nav-link">
-          Welcome, {currentUser?.email}
+        <Link to="/profile">
+          <i class="fas fa-user-circle"></i>
+          <span class="hide">Profile</span>
         </Link>
       </li>
-      <li className="nav-item">
-        <Link to="/profile" className="btn btn-warning">
-          Profile
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link to="/logout" className="btn btn-danger">
-          Logout
+      <li>
+        <Link to="/logout">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="hide">Logout</span>
         </Link>
       </li>
     </>
@@ -31,14 +29,16 @@ const Navbar = () => {
 
   const guestNavigation = (
     <>
-      <li className="nav-item">
-        <Link to="/login" className="btn btn-warning">
-          Login
+      <li>
+        <Link to="/login">
+          <i class="fas fa-sign-in-alt"></i>
+          <span class="hide">Login</span>
         </Link>
       </li>
-      <li className="nav-item">
-        <Link to="/register" className="btn btn-danger">
-          Register
+      <li>
+        <Link to="/register">
+          <i class="fas fa-user-plus"></i>
+          <span class="hide">Register</span>
         </Link>
       </li>
     </>
@@ -46,27 +46,20 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/home">
-            <img src="/logo-color.svg" alt="logo-color.svg" />
-            <span className="ps-3">Actors Hired</span>
-          </Link>
-          <div>
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link className="nav-link" to="/home">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/portfolios">
-                  Portfolios
-                </Link>
-              </li>
-              {currentUser ? userNavigation : guestNavigation}
-            </ul>
+      <nav class="navbar">
+        <div class="container">
+          <div class="logo">
+            <img src="theater.svg" alt="theater.svg" />
           </div>
+          <ul class="nav">
+            <li>
+              <Link to="/portfolios">
+                <i class="far fa-images"></i>
+                <span class="hide">Gallery</span>
+              </Link>
+            </li>
+            {currentUser ? userNavigation : guestNavigation}
+          </ul>
         </div>
       </nav>
     </>

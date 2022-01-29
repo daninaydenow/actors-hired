@@ -26,9 +26,8 @@ import ErrorFallback from "./components/ErrorFallback";
 function App() {
   return (
     <AuthProvider>
+      <Navbar />
       <div className="App">
-        <Navbar />
-
         <Routes>
           {/* Routes accessible for all types of users */}
           <Route path="/" element={<Home />} />
@@ -44,9 +43,11 @@ function App() {
           <Route
             path="/details/:actorId"
             element={
-              <ErrorBoundary FallbackComponent={ErrorFallback}>
-                <Details />
-              </ErrorBoundary>
+              <div class="forms-wrapper">
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                  <Details />
+                </ErrorBoundary>
+              </div>
             }
           />
           <Route path="*" element={<NotFound />} />
@@ -78,9 +79,11 @@ function App() {
             path="/create"
             element={
               <ProtectedRoute>
-                <ErrorBoundary FallbackComponent={ErrorFallback}>
-                  <Create />
-                </ErrorBoundary>
+                <div class="forms-wrapper">
+                  <ErrorBoundary FallbackComponent={ErrorFallback}>
+                    <Create />
+                  </ErrorBoundary>
+                </div>
               </ProtectedRoute>
             }
           />
@@ -90,9 +93,11 @@ function App() {
             path="/login"
             element={
               <GuestRoute>
-                <ErrorBoundary FallbackComponent={ErrorFallback}>
-                  <Login />
-                </ErrorBoundary>
+                <div class="forms-wrapper">
+                  <ErrorBoundary FallbackComponent={ErrorFallback}>
+                    <Login />
+                  </ErrorBoundary>
+                </div>
               </GuestRoute>
             }
           />
@@ -100,9 +105,11 @@ function App() {
             path="/register"
             element={
               <GuestRoute>
-                <ErrorBoundary FallbackComponent={ErrorFallback}>
-                  <Register />
-                </ErrorBoundary>
+                <div class="forms-wrapper">
+                  <ErrorBoundary FallbackComponent={ErrorFallback}>
+                    <Register />
+                  </ErrorBoundary>
+                </div>
               </GuestRoute>
             }
           />
@@ -112,9 +119,11 @@ function App() {
             path="/edit/:actorId"
             element={
               <UserRoute>
-                <ErrorBoundary FallbackComponent={ErrorFallback}>
-                  <Edit />
-                </ErrorBoundary>
+                <div class="forms-wrapper">
+                  <ErrorBoundary FallbackComponent={ErrorFallback}>
+                    <Edit />
+                  </ErrorBoundary>
+                </div>
               </UserRoute>
             }
           />
