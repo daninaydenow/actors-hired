@@ -1,0 +1,87 @@
+.create-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  width: 700px;
+  max-width: 90%;
+  background-color: #3a3b3c;
+  color: white;
+  box-shadow: 2.5px 2.5px 5px black;
+  text-shadow: 0 0 2px black;
+}
+
+.form-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: white;
+}
+
+.credentials-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: white;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+  width: 100%;
+}
+
+.inputs-container input {
+  margin-top: 10px;
+  height: 40px;
+  width: 70%;
+  font-size: x-large;
+}
+
+.create-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
+  width: 400px;
+  color: #b0b3b8;
+}
+
+.create-actions .btn {
+  background-color: transparent;
+  font-size: 2rem;
+  border: none;
+  color: #b0b3b8;
+  -webkit-transition: color 0.5s ease-out;
+  -moz-transition: color 0.5s ease-out;
+  -o-transition: color 0.5s ease-out;
+  -ms-transition: color 0.5s ease-out;
+  transition: color 0.5s ease-out;
+  text-decoration: none;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  padding-left: 7%;
+  padding-right: 7%;
+  margin: 1rem;
+}
+
+.create-actions .btn:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.inputs-container > textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 70%;
+}

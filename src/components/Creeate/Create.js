@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 
 import * as actorService from "../../services/actorService";
 import { validate } from "../../helpers/formValidator";
-import styles from "./Create.module.css";
+import "./Create.css";
 
 const initialFormValues = {
   profImgUrl: "",
@@ -49,7 +49,93 @@ const Create = () => {
   };
 
   return (
-    <form method="POST" onSubmit={createPortfolioHandler}>
+    <>
+      <form
+        method="POST"
+        onSubmit={createPortfolioHandler}
+        className="create-form"
+      >
+        <div className="form-heading">
+          <h1>Create</h1>
+        </div>
+        <div className="inputs-container">
+          <label htmlFor="profile-image">Profile Picture URL:</label>
+          <input
+            type="url"
+            id="profile-image"
+            name="profImgUrl"
+            value={formValues.profImgUrl}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <div className="inputs-container">
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={formValues.name}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <div className="inputs-container">
+          <label htmlFor="genre">Genre:</label>
+          <input
+            type="text"
+            name="genre"
+            id="genre"
+            value={formValues.genre}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <div className="inputs-container">
+          <label htmlFor="bio">Biography: </label>
+          <textarea
+            name="experience"
+            id="bio"
+            rows="10"
+            className="bio"
+            value={formValues.experience}
+            onChange={onChangeHandler}
+          ></textarea>
+        </div>
+        <div className="inputs-container">
+          <label htmlFor="porfolio-one">Portfolio Image Url:</label>
+          <input
+            type="url"
+            id="profile-one"
+            name="imgOneUrl"
+            value={formValues.imgOneUrl}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <div className="inputs-container">
+          <label htmlFor="porfolio-two">Portfolio Image Url:</label>
+          <input
+            type="url"
+            id="profile-two"
+            name="imgTwoUrl"
+            value={formValues.imgTwoUrl}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <div className="inputs-container">
+          <label htmlFor="porfolio-three">Portfolio Image Url:</label>
+          <input
+            type="url"
+            id="profile-three"
+            name="imgThreeUrl"
+            value={formValues.imgThreeUrl}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <div className="create-actions">
+          <button type="submit" className="btn">
+            <i className="far fa-plus-square"></i>Create
+          </button>
+        </div>
+      </form>
+      {/* <form method="POST" onSubmit={createPortfolioHandler}>
       <div className={`card  ${styles.style} `}>
         <div className="row h-100 text-start">
           <div className={`col-3 ps-3 pe-3`}>
@@ -166,7 +252,8 @@ const Create = () => {
           </div>
         </div>
       </div>
-    </form>
+    </form> */}
+    </>
   );
 };
 
