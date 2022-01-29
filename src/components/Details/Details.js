@@ -6,7 +6,7 @@ import { loadSpinner } from "../../helpers/loadSpinner";
 
 import * as userService from "../../services/userService";
 import * as actorService from "../../services/actorService";
-import styles from "./Details.module.css";
+import "./Details.css";
 
 const Details = () => {
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ const Details = () => {
   const isLikedByCurrentUser = likes.includes(currentUser?.uid);
   const isOwner = currentUser?.uid === actor._ownerId;
 
-  const deletePortfolioHandler = (e) => {
+  const deletePortfolioHandler = () => {
     actorService
       .remove(actorId)
       .then(() => {
@@ -104,151 +104,186 @@ const Details = () => {
 
   const ownerButtons = (
     <>
-      <div className={`${styles.boxtwo} text-center`}>
+      <div className="btn-wraper">
         <Link
           to={`/edit/${actorId}`}
           state={{ ownerId: actor._ownerId }}
-          className={"btn btn-warning mt-5 me-3"}
+          className="details-edit"
         >
+          <i className="far fa-edit"></i>
           Edit
         </Link>
-        <button
-          className={"btn btn-danger mt-5 me-2"}
-          onClick={deletePortfolioHandler}
-        >
+      </div>
+      <div className="btn-wraper">
+        <button className="details-delete" onClick={deletePortfolioHandler}>
+          <i className="far fa-trash-alt"></i>
           Delete
         </button>
       </div>
-      <div
-        className={`${styles.boxthree} d-flex justify-content-center align-items-center text-center`}
-      >
-        <p className={"mt-5"}>Likes: {likes?.length} </p>
+
+      <div className="btn-wraper">
+        <span>Likes: {likes?.length}</span>
       </div>
     </>
   );
 
   const userButtons = (
     <>
-      <div className={`${styles.box} text-center`}>
-        {isIncludedInUserHirings ? (
-          <>
-            <span className="badge rounded-pill bg-success mt-3">
-              You've already hired this actor!
-            </span>
-            <div>
-              <button
-                className="btn btn-danger mt-2"
-                onClick={unhireActorHandler}
-              >
-                Unhire
-              </button>
-            </div>
-          </>
-        ) : (
-          <button className={`btn btn-warning mt-5`} onClick={hireActorHandler}>
-            Hire Actor!
+      {isIncludedInUserHirings ? (
+        <>
+          <div className="btn-wraper">
+            <button className="details-unhire" onClick={unhireActorHandler}>
+              <i className="fas fa-undo"></i>
+              Unhire
+            </button>
+          </div>
+          <div className="btn-wraper">You've already hired this actor !</div>
+        </>
+      ) : (
+        <div className="btn-wraper">
+          <button className="details-hire" onClick={hireActorHandler}>
+            <i className="fas fa-plus"></i>Hire
           </button>
-        )}
-      </div>
-      <div
-        className={`${styles.boxthree} d-flex justify-content-center align-items-center text-center`}
-      >
-        {isLikedByCurrentUser ? (
-          ""
-        ) : (
-          <button
-            className={"btn btn-primary mt-4 me-5"}
-            onClick={likePortfolioHandler}
-          >
-            Like
+        </div>
+      )}
+
+      {isLikedByCurrentUser ? (
+        <span>Likes: {likes?.length}</span>
+      ) : (
+        <div className="btn-wraper">
+          <button className="details-like" onClick={likePortfolioHandler}>
+            <i className="far fa-thumbs-up"></i>Like
           </button>
-        )}
-        <p className={"mt-5"}>Likes: {likes?.length} </p>
-      </div>
+          <span>Likes: {likes?.length}</span>
+        </div>
+      )}
     </>
   );
 
   const guestButtons = (
-    <div
-      className={`${styles.boxthree} d-flex justify-content-center align-items-center text-center`}
-    >
-      <p className={"mt-5"}>Likes: {likes?.length} </p>
+    <div className="btn-wraper">
+      <span>Likes: {likes?.length}</span>
     </div>
   );
 
   return (
-    <div className={`card  ${styles.style}`}>
-      <div className="row h-100 text-start">
-        <div className={`col-3 ps-3 pe-3`}>
-          <div className={`h-100`}>
-            <div
-              className={` ${styles.border} ${styles.imgsize} text-center mb-2`}
-            >
-              <img
-                src={actor.profImgUrl}
-                alt="img"
-                className="img-fluid h-100"
-              />
-            </div>
-            <div
-              className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}
-            >
-              <h5>Actors name: </h5>
-              <p>{actor.name}</p>
-            </div>
-            <div
-              className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}
-            >
-              <h5>Genre:</h5>
-              <p>{actor.genre}</p>
-            </div>
+    <>
+      <div className="details-form">
+        <section className="header-section">
+          <div className="profile-picture">
+            <img src={actor.profImgUrl} alt={actor.profImgUrl} />
           </div>
-        </div>
-        <div className={`col-9 pe-3`}>
-          <div className={`h-100`}>
-            <div
-              className={` ${styles.border} ps-2 pt-2 h-50 mb-2 text-center`}
-            >
-              <div className={styles.imgboxone}>
-                <img
-                  src={actor.imgOneUrl}
-                  alt="img"
-                  className={`${styles.border} img-fluid h-100`}
-                />
-              </div>
-              <div className={styles.imgboxtwo}>
-                <img
-                  src={actor.imgTwoUrl}
-                  alt="img"
-                  className="img-fluid h-100"
-                />
-              </div>
-              <div className={styles.imgboxthree}>
-                <img
-                  src={actor.imgThreeUrl}
-                  alt="img"
-                  className="img-fluid h-100"
-                />
-              </div>
+          <div className="info-container">
+            <div className="head-info">
+              <h4 className="portfolio-name">{actor.name}</h4>
+              <p>
+                <small>age:</small> 26
+              </p>
+              <p>
+                <small>genre:</small> {actor.genre}
+              </p>
             </div>
-            <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
+            <div className="bio" disabled>
               <h4>Experience:</h4>
               <p>{actor.experience}</p>
             </div>
-            <div>
-              {loadingActor && loadSpinner}
-              {loadingActor && loadingUserHirings
-                ? ""
-                : currentUser
-                ? isOwner
-                  ? ownerButtons
-                  : userButtons
-                : guestButtons}
-            </div>
           </div>
-        </div>
+        </section>
+        <section className="images-section">
+          <div className="details-img-container">
+            <img className="img" src={actor.imgOneUrl} alt="first img" />
+          </div>
+          <div className="details-img-container">
+            <img className="img" src={actor.imgTwoUrl} alt="second img" />
+          </div>
+          <div className="details-img-container">
+            <img className="img" src={actor.imgThreeUrl} alt="third img" />
+          </div>
+        </section>
+        <section className="details-actions">
+          {loadingActor && loadSpinner}
+          {loadingActor && loadingUserHirings
+            ? ""
+            : currentUser
+            ? isOwner
+              ? ownerButtons
+              : userButtons
+            : guestButtons}
+        </section>
       </div>
-    </div>
+    </>
+    // <div className={`card  ${styles.style}`}>
+    //   <div className="row h-100 text-start">
+    //     <div className={`col-3 ps-3 pe-3`}>
+    //       <div className={`h-100`}>
+    //         <div
+    //           className={` ${styles.border} ${styles.imgsize} text-center mb-2`}
+    //         >
+    //           <img
+    //             src={actor.profImgUrl}
+    //             alt="img"
+    //             className="img-fluid h-100"
+    //           />
+    //         </div>
+    //         <div
+    //           className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}
+    //         >
+    //           <h5>Actors name: </h5>
+    //           <p>{actor.name}</p>
+    //         </div>
+    //         <div
+    //           className={` ${styles.border} ${styles.general} ps-2 pt-2 mb-2`}
+    //         >
+    //           <h5>Genre:</h5>
+    //           <p>{actor.genre}</p>
+    //         </div>
+    //       </div>
+    //     </div>
+    //     <div className={`col-9 pe-3`}>
+    //       <div className={`h-100`}>
+    //         <div
+    //           className={` ${styles.border} ps-2 pt-2 h-50 mb-2 text-center`}
+    //         >
+    //           <div className={styles.imgboxone}>
+    //             <img
+    //               src={actor.imgOneUrl}
+    //               alt="img"
+    //               className={`${styles.border} img-fluid h-100`}
+    //             />
+    //           </div>
+    //           <div className={styles.imgboxtwo}>
+    //             <img
+    //               src={actor.imgTwoUrl}
+    //               alt="img"
+    //               className="img-fluid h-100"
+    //             />
+    //           </div>
+    //           <div className={styles.imgboxthree}>
+    //             <img
+    //               src={actor.imgThreeUrl}
+    //               alt="img"
+    //               className="img-fluid h-100"
+    //             />
+    //           </div>
+    //         </div>
+    //         <div className={` ${styles.border} ps-2 pt-2 h-25 mb-2`}>
+    //           <h4>Experience:</h4>
+    //           <p>{actor.experience}</p>
+    //         </div>
+    //         <div>
+    //           {loadingActor && loadSpinner}
+    //           {loadingActor && loadingUserHirings
+    //             ? ""
+    //             : currentUser
+    //             ? isOwner
+    //               ? ownerButtons
+    //               : userButtons
+    //             : guestButtons}
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 export default Details;

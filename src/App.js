@@ -43,7 +43,7 @@ function App() {
           <Route
             path="/details/:actorId"
             element={
-              <div class="forms-wrapper">
+              <div className="forms-wrapper">
                 <ErrorBoundary FallbackComponent={ErrorFallback}>
                   <Details />
                 </ErrorBoundary>
@@ -79,7 +79,7 @@ function App() {
             path="/create"
             element={
               <ProtectedRoute>
-                <div class="forms-wrapper">
+                <div className="forms-wrapper">
                   <ErrorBoundary FallbackComponent={ErrorFallback}>
                     <Create />
                   </ErrorBoundary>
@@ -93,7 +93,7 @@ function App() {
             path="/login"
             element={
               <GuestRoute>
-                <div class="forms-wrapper">
+                <div className="forms-wrapper">
                   <ErrorBoundary FallbackComponent={ErrorFallback}>
                     <Login />
                   </ErrorBoundary>
@@ -105,7 +105,7 @@ function App() {
             path="/register"
             element={
               <GuestRoute>
-                <div class="forms-wrapper">
+                <div className="forms-wrapper">
                   <ErrorBoundary FallbackComponent={ErrorFallback}>
                     <Register />
                   </ErrorBoundary>
@@ -119,7 +119,7 @@ function App() {
             path="/edit/:actorId"
             element={
               <UserRoute>
-                <div class="forms-wrapper">
+                <div className="forms-wrapper">
                   <ErrorBoundary FallbackComponent={ErrorFallback}>
                     <Edit />
                   </ErrorBoundary>
