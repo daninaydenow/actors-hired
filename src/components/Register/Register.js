@@ -48,12 +48,12 @@ const Register = () => {
 
   return (
     <>
-      <form class="register-form">
-        <div class="form-heading">
+      <form className="register-form">
+        <div className="form-heading">
           <h1>Register</h1>
         </div>
-        <section class="credentials-section">
-          <div class="inputs-container">
+        <section className="credentials-section">
+          <div className="inputs-container">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -63,7 +63,7 @@ const Register = () => {
               onChange={onChangeHandler}
             />
           </div>
-          <div class="inputs-container">
+          <div className="inputs-container">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -73,7 +73,7 @@ const Register = () => {
               onChange={onChangeHandler}
             />
           </div>
-          <div class="inputs-container">
+          <div className="inputs-container">
             <label htmlFor="rePassword">Repeat Password</label>
             <input
               type="password"
@@ -85,18 +85,22 @@ const Register = () => {
           </div>
         </section>
         <section>
-          <div class="actions">
-            <button type="submit" className="btn register">
-              <i class="fas fa-user-plus"></i>
-              <span class="hide">Register</span>
+          <div className="register-actions">
+            <button
+              type="submit"
+              className="btn register"
+              onClick={registerHandler}
+            >
+              <i className="fas fa-user-plus"></i>
+              <span className="hide">Register</span>
             </button>
 
             <div className="question">
               <small>Already have an account ?</small>
             </div>
             <Link to="/login" className="btn login">
-              <i class="fas fa-sign-in-alt"></i>
-              <span class="hide">Login</span>
+              <i className="fas fa-sign-in-alt"></i>
+              <span className="hide">Login</span>
             </Link>
           </div>
         </section>
