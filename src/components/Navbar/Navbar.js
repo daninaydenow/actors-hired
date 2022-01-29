@@ -8,20 +8,20 @@ const Navbar = () => {
     <>
       <li>
         <Link to="/create">
-          <i class="far fa-plus-square"></i>
-          <span class="hide">Create</span>
+          <i className="far fa-plus-square"></i>
+          <span className="hide">Create</span>
         </Link>
       </li>
       <li>
         <Link to="/profile">
-          <i class="fas fa-user-circle"></i>
-          <span class="hide">Profile</span>
+          <i className="fas fa-user-circle"></i>
+          <span className="hide">Profile</span>
         </Link>
       </li>
       <li>
         <Link to="/logout">
-          <i class="fas fa-sign-out-alt"></i>
-          <span class="hide">Logout</span>
+          <i className="fas fa-sign-out-alt"></i>
+          <span className="hide">Logout</span>
         </Link>
       </li>
     </>
@@ -31,14 +31,14 @@ const Navbar = () => {
     <>
       <li>
         <Link to="/login">
-          <i class="fas fa-sign-in-alt"></i>
-          <span class="hide">Login</span>
+          <i className="fas fa-sign-in-alt"></i>
+          <span className="hide">Login</span>
         </Link>
       </li>
       <li>
         <Link to="/register">
-          <i class="fas fa-user-plus"></i>
-          <span class="hide">Register</span>
+          <i className="fas fa-user-plus"></i>
+          <span className="hide">Register</span>
         </Link>
       </li>
     </>
@@ -46,16 +46,16 @@ const Navbar = () => {
 
   return (
     <>
-      <nav class="navbar">
-        <div class="container">
-          <div class="logo">
+      <nav className="navbar">
+        <div className="container">
+          <div className="logo">
             <img src="theater.svg" alt="theater.svg" />
           </div>
-          <ul class="nav">
+          <ul className="nav">
             <li>
               <Link to="/portfolios">
-                <i class="far fa-images"></i>
-                <span class="hide">Gallery</span>
+                <i className="far fa-images"></i>
+                <span className="hide">Gallery</span>
               </Link>
             </li>
             {currentUser ? userNavigation : guestNavigation}

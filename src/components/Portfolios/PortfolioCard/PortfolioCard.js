@@ -4,15 +4,15 @@ import "./PortfolioCard.css";
 const PortfolioCard = ({ profImgUrl, name, _id: actorId }) => {
   return (
     <>
-      <div class="card">
-        <div class="img-container">
-          <img src={profImgUrl} class="card-img" alt={profImgUrl} />
+      <div className="card">
+        <div className="img-container">
+          <img src={profImgUrl} className="card-img" alt={profImgUrl} />
         </div>
-        <div class="card-body">
+        <div className="card-body">
           <h4>{name}</h4>
           <p>26</p>
           <Link to={`/details/${actorId}`}>
-            <i class="fas fa-angle-double-right"></i>
+            <i className="fas fa-angle-double-right"></i>
           </Link>
         </div>
       </div>
