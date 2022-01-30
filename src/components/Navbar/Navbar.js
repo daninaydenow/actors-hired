@@ -53,6 +53,12 @@ const Navbar = () => {
           </div>
           <ul className="nav">
             <li>
+              <Link to="/home">
+                <i class="fas fa-home"></i>
+                <span class="hide"> Home</span>
+              </Link>
+            </li>
+            <li>
               <Link to="/portfolios">
                 <i className="far fa-images"></i>
                 <span className="hide"> Gallery</span>

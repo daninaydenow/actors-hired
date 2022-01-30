@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom";
-import styles from "./Home.module.css";
+import "./Home.css";
 const Home = () => {
   return (
     <>
-      <div className={`${styles.hero} + jumbotron mb-5`}>
-        <h1 className="display-3">Welcome to Actors Hired !</h1>
-        <p className="lead">World's first casting-directors free platform !</p>
-        <p>Hire an actor now !</p>
-        <p className="lead">
-          <Link
-            className="btn btn-warning btn-lg mt-2"
-            to="/portfolios"
-            role="button"
-          >
-            Hire now
+      <div class="hero-container">
+        <video autoPlay muted loop id="heroVideo">
+          <source src="./hero_video.webm" type="video/webm" />
+        </video>
+        <div class="hero-attributes">
+          <div class="hero-heading">
+            <h5>Welcome to Actors Hired</h5>
+          </div>
+          <div class="hero-description">
+            <p>World's first "casting director-free" platform!</p>
+          </div>
+
+          <Link to="/portfolios" class="hero-button">
+            <i class="fas fa-play"></i> Hire Now
           </Link>
-        </p>
+        </div>
       </div>
     </>
   );
