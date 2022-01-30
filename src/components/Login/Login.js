@@ -74,14 +74,14 @@ const Login = () => {
           <div className="login-actions">
             <button type="submit" className="btn login">
               <i className="fas fa-sign-in-alt"></i>
-              <span className="hide">Login</span>
+              <span className="hide"> Login</span>
             </button>
             <div className="question">
               <small>Don't have an account ?</small>
             </div>
             <Link to="/register" className="btn register">
               <i className="fas fa-user-plus"></i>
-              <span className="hide">Register</span>
+              <span className="hide"> Register</span>
             </Link>
           </div>
         </section>

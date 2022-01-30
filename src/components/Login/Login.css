@@ -1,12 +1,9 @@
 @media screen and (max-width: 500px) {
   .login {
-    margin: 0;
-    padding: 0;
-    margin-left: 100px;
+    margin-left: 70px !important;
   }
   .register {
-    margin: 0;
-    margin-left: 150px;
+    margin-left: 125px !important;
   }
 }
 
@@ -78,11 +75,10 @@
   -ms-transition: color 0.5s ease-out;
   transition: color 0.5s ease-out;
   text-decoration: none;
-  padding-top: 4%;
-  padding-bottom: 4%;
+  padding-top: 7%;
+  padding-bottom: 7%;
   padding-left: 7%;
   padding-right: 7%;
-  margin: 1rem;
 }
 
 .login-actions .btn:hover {

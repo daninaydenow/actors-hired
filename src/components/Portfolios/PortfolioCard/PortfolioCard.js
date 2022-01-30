@@ -11,9 +11,11 @@ const PortfolioCard = ({ profImgUrl, name, _id: actorId }) => {
         <div className="card-body">
           <h4>{name}</h4>
           <p>26</p>
-          <Link to={`/details/${actorId}`}>
-            <i className="fas fa-angle-double-right"></i>
-          </Link>
+          <div className="card-button">
+            <Link to={`/details/${actorId}`} className="a">
+              <i className="fas fa-angle-double-right"></i> VIEW
+            </Link>
+          </div>
         </div>
       </div>
       {/* <div className={`${styles.style} card`}>

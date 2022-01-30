@@ -108,14 +108,14 @@ const Details = () => {
         <Link
           to={`/edit/${actorId}`}
           state={{ ownerId: actor._ownerId }}
-          className="details-edit"
+          className="details-btn"
         >
           <i className="far fa-edit"></i>
           Edit
         </Link>
       </div>
       <div className="btn-wraper">
-        <button className="details-delete" onClick={deletePortfolioHandler}>
+        <button className="details-btn" onClick={deletePortfolioHandler}>
           <i className="far fa-trash-alt"></i>
           Delete
         </button>
@@ -132,16 +132,15 @@ const Details = () => {
       {isIncludedInUserHirings ? (
         <>
           <div className="btn-wraper">
-            <button className="details-unhire" onClick={unhireActorHandler}>
+            <button className="details-btn" onClick={unhireActorHandler}>
               <i className="fas fa-undo"></i>
               Unhire
             </button>
           </div>
-          <div className="btn-wraper">You've already hired this actor !</div>
         </>
       ) : (
         <div className="btn-wraper">
-          <button className="details-hire" onClick={hireActorHandler}>
+          <button className="details-btn" onClick={hireActorHandler}>
             <i className="fas fa-plus"></i>Hire
           </button>
         </div>
@@ -151,7 +150,7 @@ const Details = () => {
         <span>Likes: {likes?.length}</span>
       ) : (
         <div className="btn-wraper">
-          <button className="details-like" onClick={likePortfolioHandler}>
+          <button className="details-btn" onClick={likePortfolioHandler}>
             <i className="far fa-thumbs-up"></i>Like
           </button>
           <span>Likes: {likes?.length}</span>

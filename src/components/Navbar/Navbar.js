@@ -9,19 +9,19 @@ const Navbar = () => {
       <li>
         <Link to="/create">
           <i className="far fa-plus-square"></i>
-          <span className="hide">Create</span>
+          <span className="hide"> Create</span>
         </Link>
       </li>
       <li>
         <Link to="/profile">
           <i className="fas fa-user-circle"></i>
-          <span className="hide">Profile</span>
+          <span className="hide"> Profile</span>
         </Link>
       </li>
       <li>
         <Link to="/logout">
           <i className="fas fa-sign-out-alt"></i>
-          <span className="hide">Logout</span>
+          <span className="hide"> Logout</span>
         </Link>
       </li>
     </>
@@ -32,13 +32,13 @@ const Navbar = () => {
       <li>
         <Link to="/login">
           <i className="fas fa-sign-in-alt"></i>
-          <span className="hide">Login</span>
+          <span className="hide"> Login</span>
         </Link>
       </li>
       <li>
         <Link to="/register">
           <i className="fas fa-user-plus"></i>
-          <span className="hide">Register</span>
+          <span className="hide"> Register</span>
         </Link>
       </li>
     </>
@@ -55,7 +55,7 @@ const Navbar = () => {
             <li>
               <Link to="/portfolios">
                 <i className="far fa-images"></i>
-                <span className="hide">Gallery</span>
+                <span className="hide"> Gallery</span>
               </Link>
             </li>
             {currentUser ? userNavigation : guestNavigation}

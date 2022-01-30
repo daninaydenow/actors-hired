@@ -97,21 +97,22 @@
 
 .details-btn {
   border: hidden;
-  border-radius: 10%;
-  background-color: #3a3b3c;
-  color: #b0b3b8;
+  text-decoration: none;
+  background-color: grey;
+  color: black;
   transition: color 0.3s ease-in-out;
+  opacity: 0.9;
   padding: 10px;
-  margin: 30px;
-  font-size: 20px;
+  font-size: 25px;
 }
 
-.details-btn:hover {
+.details-btn:hover,
+.details-btn:focus {
   color: white;
   cursor: pointer;
 }
 
-.details-edit {
+/* .details-edit {
   border: hidden;
   border-radius: 10%;
   padding: 10px;
@@ -167,7 +168,7 @@
 .details-like:hover {
   cursor: pointer;
   background-color: #0e7ad3;
-}
+} */
 
 .btn-wraper span {
   margin: 1rem;
@@ -201,6 +202,8 @@
   }
 
   .btn-wraper {
+    display: flex;
+    flex-direction: column;
     margin: 1rem;
   }
 }

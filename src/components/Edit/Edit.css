@@ -1,4 +1,4 @@
-.create-form {
+.edit-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,7 +46,7 @@
   font-size: x-large;
 }
 
-.create-actions {
+.edit-actions {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,7 +56,7 @@
   color: #b0b3b8;
 }
 
-.create-actions .btn {
+.edit-actions .btn {
   background-color: transparent;
   font-size: 2rem;
   border: none;
@@ -74,7 +74,7 @@
   margin: 1rem;
 }
 
-.create-actions .btn:hover {
+.edit-actions .btn:hover {
   color: white;
   cursor: pointer;
 }
@@ -87,7 +87,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .create-actions .btn {
-    margin-left: 120px !important;
+  .edit-actions .btn {
+    margin-left: 95px !important;
   }
 }
