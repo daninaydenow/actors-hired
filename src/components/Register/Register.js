@@ -62,6 +62,7 @@ const Register = () => {
               value={formValues.email}
               onChange={onChangeHandler}
             />
+            <p className="error">{formErrors.email}</p>
           </div>
           <div className="inputs-container">
             <label htmlFor="password">Password</label>
@@ -72,9 +73,10 @@ const Register = () => {
               value={formValues.password}
               onChange={onChangeHandler}
             />
+            <p className="error">{formErrors.password}</p>
           </div>
           <div className="inputs-container">
-            <label htmlFor="rePassword">Repeat Password</label>
+            <label htmlFor="rePassword">Confirm Password</label>
             <input
               type="password"
               name="rePassword"
@@ -82,6 +84,7 @@ const Register = () => {
               value={formValues.rePassword}
               onChange={onChangeHandler}
             />
+            <p className="error">{formErrors.rePassword}</p>
           </div>
         </section>
         <section>

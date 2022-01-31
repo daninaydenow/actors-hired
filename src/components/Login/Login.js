@@ -58,6 +58,7 @@ const Login = () => {
               value={formValues.email}
               onChange={onChangeHandler}
             />
+            <p className="error">{formErrors.email}</p>
           </div>
           <div className="inputs-container">
             <label htmlFor="password">Password</label>
@@ -68,6 +69,7 @@ const Login = () => {
               value={formValues.password}
               onChange={onChangeHandler}
             />
+            <p className="error">{formErrors.password}</p>
           </div>
         </section>
         <section>

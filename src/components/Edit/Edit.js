@@ -79,8 +79,8 @@ const Edit = () => {
             name="profImgUrl"
             value={formValues.profImgUrl}
             onChange={onChangeHandler}
-            placeholder={formErrors.profImgUrl}
           />
+          <p className="error">{formErrors.profImgUrl}</p>
         </div>
         <div className="inputs-container">
           <label htmlFor="name">Name *</label>
@@ -90,8 +90,8 @@ const Edit = () => {
             id="name"
             value={formValues.name}
             onChange={onChangeHandler}
-            placeholder={formErrors.name}
           />
+          <p className="error">{formErrors.name}</p>
         </div>
         <div className="inputs-container">
           <label htmlFor="genre">Genre *</label>
@@ -101,8 +101,8 @@ const Edit = () => {
             id="genre"
             value={formValues.genre}
             onChange={onChangeHandler}
-            placeholder={formErrors.genre}
           />
+          <p className="error">{formErrors.genre}</p>
         </div>
         <div className="inputs-container">
           <label htmlFor="experience">Experience *</label>
@@ -112,8 +112,8 @@ const Edit = () => {
             rows="10"
             value={formValues.experience}
             onChange={onChangeHandler}
-            placeholder={formErrors.experience}
           ></textarea>
+          <p className="error">{formErrors.experience}</p>
         </div>
         <div className="inputs-container">
           <label htmlFor="porfolio-one">Portfolio Image Url</label>

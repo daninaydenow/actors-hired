@@ -14,7 +14,7 @@ export const validate = (values) => {
       errors.password = "Password cannot be less than 6 characters!";
     }
     if (!values.rePassword) {
-      errors.rePassword = "Password confirmation is required!";
+      errors.rePassword = "Confirmation is required!";
     } else if (values.password !== values.rePassword) {
       errors.rePassword = "Passwords don't match!";
     }
@@ -23,12 +23,12 @@ export const validate = (values) => {
   if (values.hasOwnProperty("password")) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.email) {
-      errors.email = "Please enter Your email!";
+      errors.email = "Email is required !";
     } else if (!regex.test(values.email)) {
       errors.email = "This is not a valid email format!";
     }
     if (!values.password) {
-      errors.password = "Please enter Your password!";
+      errors.password = "Password is required !";
     }
   }
   // validates create/edit forms fields
