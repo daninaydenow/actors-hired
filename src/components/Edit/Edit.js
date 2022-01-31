@@ -72,48 +72,51 @@ const Edit = () => {
           <h1>Edit</h1>
         </div>
         <div className="inputs-container">
-          <label htmlFor="profile-image">Profile Picture URL:</label>
+          <label htmlFor="profile-image">Profile Picture URL *</label>
           <input
             type="url"
             id="profile-image"
             name="profImgUrl"
             value={formValues.profImgUrl}
             onChange={onChangeHandler}
+            placeholder={formErrors.profImgUrl}
           />
         </div>
         <div className="inputs-container">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Name *</label>
           <input
             type="text"
             name="name"
             id="name"
             value={formValues.name}
             onChange={onChangeHandler}
+            placeholder={formErrors.name}
           />
         </div>
         <div className="inputs-container">
-          <label htmlFor="genre">Genre:</label>
+          <label htmlFor="genre">Genre *</label>
           <input
             type="text"
             name="genre"
             id="genre"
             value={formValues.genre}
             onChange={onChangeHandler}
+            placeholder={formErrors.genre}
           />
         </div>
         <div className="inputs-container">
-          <label htmlFor="bio">Biography: </label>
+          <label htmlFor="experience">Experience *</label>
           <textarea
             name="experience"
-            id="bio"
+            id="experience"
             rows="10"
-            className="bio"
             value={formValues.experience}
             onChange={onChangeHandler}
+            placeholder={formErrors.experience}
           ></textarea>
         </div>
         <div className="inputs-container">
-          <label htmlFor="porfolio-one">Portfolio Image Url:</label>
+          <label htmlFor="porfolio-one">Portfolio Image Url</label>
           <input
             type="url"
             id="profile-one"
@@ -123,7 +126,7 @@ const Edit = () => {
           />
         </div>
         <div className="inputs-container">
-          <label htmlFor="porfolio-two">Portfolio Image Url:</label>
+          <label htmlFor="porfolio-two">Portfolio Image Url</label>
           <input
             type="url"
             id="profile-two"
@@ -133,7 +136,7 @@ const Edit = () => {
           />
         </div>
         <div className="inputs-container">
-          <label htmlFor="porfolio-three">Portfolio Image Url:</label>
+          <label htmlFor="porfolio-three">Portfolio Image Url</label>
           <input
             type="url"
             id="profile-three"

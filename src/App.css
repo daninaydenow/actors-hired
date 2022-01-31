@@ -21,3 +21,9 @@
   background-color: #e6e6e6;
   overflow: hidden;
 }
+
+.error {
+  color: #e71d36;
+  text-decoration: none;
+  text-shadow: 2px 2px 3px black;
+}

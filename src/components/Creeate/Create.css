@@ -84,6 +84,8 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 70%;
+  font-size: x-large;
+  resize: none;
 }
 
 @media screen and (max-width: 500px) {
