@@ -57,9 +57,11 @@ function App() {
             path="/profile"
             element={
               <ProtectedRoute>
-                <ErrorBoundary FallbackComponent={ErrorFallback}>
-                  <Profile />
-                </ErrorBoundary>
+                <div className="forms-wrapper">
+                  <ErrorBoundary FallbackComponent={ErrorFallback}>
+                    <Profile />
+                  </ErrorBoundary>
+                </div>
               </ProtectedRoute>
             }
           />

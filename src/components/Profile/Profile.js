@@ -8,7 +8,7 @@ import * as actorService from "../../services/actorService";
 import MissingData from "./MissingData";
 import ProfileListItem from "./ProfileListItem";
 
-import styles from "./Profile.module.css";
+import "./Profile.css";
 
 export const Profile = () => {
   const [myHirings, setMyHirings] = useState([]);
@@ -59,40 +59,26 @@ export const Profile = () => {
   );
 
   const profile = {
-    alert: "You don't have any portfolios yet!",
-    action: "Create a new portfolio today!",
+    alert: "No portfolios yet!",
     buttonName: "Create",
     path: "/create",
   };
 
   const hirings = {
-    alert: "You have no hirings yet!",
-    action: "Find the best actor for your performance!",
+    alert: "No hirings yet!",
     buttonName: "Hire Now",
     path: "/portfolios",
   };
 
   return (
-    <>
-      <h1 className={styles.heading}>My Profile</h1>
-      <div className={`${styles.boxOne} card`}>
-        <h1 className="h1 text-white p-2 ">My Portfolios</h1>
-        <ul className="p-2">
-          {loadingActors && loadSpinner}
-          {loadingActors ? (
-            ""
-          ) : populatedMyPortfolios.length !== 0 ? (
-            populatedMyPortfolios.map((x) => (
-              <ProfileListItem key={x._id} {...x} />
-            ))
-          ) : (
-            <MissingData {...profile} />
-          )}
-        </ul>
-      </div>
-      <div className={`${styles.boxTwo} card`}>
-        <h1 className="h1 text-white p-2">My Hirings</h1>
-        <ul className="container-fluid p-2">
+    <div className="profile-page">
+      <header className="profile-header">
+        <h1>Profile</h1>
+        <p>Daniel Naydenov</p>
+      </header>
+      <div className="content-container">
+        <div className="my-hirings">
+          <h3 className="profile-page-heading">Hirings</h3>
           {loadingHirings && loadSpinner}
           {loadingHirings ? (
             ""
@@ -103,9 +89,54 @@ export const Profile = () => {
           ) : (
             <MissingData {...hirings} />
           )}
-        </ul>
+        </div>
+        <div className="my-portfolios">
+          <h3 className="profile-page-heading">Created</h3>
+          {loadingActors && loadSpinner}
+          {loadingActors ? (
+            ""
+          ) : populatedMyPortfolios.length !== 0 ? (
+            populatedMyPortfolios.map((x) => (
+              <ProfileListItem key={x._id} {...x} />
+            ))
+          ) : (
+            <MissingData {...profile} />
+          )}
+        </div>
       </div>
-    </>
+    </div>
+
+    // <h1 className={styles.heading}>My Profile</h1>
+    // <div className={`${styles.boxOne} card`}>
+    //   <h1 className="h1 text-white p-2 ">My Portfolios</h1>
+    //   <ul className="p-2">
+    //     {loadingActors && loadSpinner}
+    //     {loadingActors ? (
+    //       ""
+    //     ) : populatedMyPortfolios.length !== 0 ? (
+    //       populatedMyPortfolios.map((x) => (
+    //         <ProfileListItem key={x._id} {...x} />
+    //       ))
+    //     ) : (
+    //       <MissingData {...profile} />
+    //     )}
+    //   </ul>
+    // </div>
+    // <div className={`${styles.boxTwo} card`}>
+    //   <h1 className="h1 text-white p-2">My Hirings</h1>
+    //   <ul className="container-fluid p-2">
+    //     {loadingHirings && loadSpinner}
+    //     {loadingHirings ? (
+    //       ""
+    //     ) : populatedMyHirings.length !== 0 ? (
+    //       populatedMyHirings.map((x) => (
+    //         <ProfileListItem key={x._id} {...x} />
+    //       ))
+    //     ) : (
+    //       <MissingData {...hirings} />
+    //     )}
+    //   </ul>
+    // </div>
   );
 };
 
