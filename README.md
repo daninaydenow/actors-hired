@@ -6,8 +6,8 @@ React JS Project for SoftUni React course
 
 - React JS
 - React Router Dom v6
-- HTML & CSS
-- Boostrap 5
+- HTML
+- CSS
 - Firebase
 - Firestore
 
