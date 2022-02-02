@@ -9,6 +9,7 @@ import "./Create.css";
 const initialFormValues = {
   profImgUrl: "",
   name: "",
+  age: "",
   genre: "",
   imgOneUrl: "",
   imgTwoUrl: "",
@@ -79,6 +80,17 @@ const Create = () => {
             onChange={onChangeHandler}
           />
           <p className="error">{formErrors.name}</p>
+        </div>
+        <div className="inputs-container">
+          <label htmlFor="age">Age *</label>
+          <input
+            type="number"
+            name="age"
+            id="age"
+            value={formValues.age}
+            onChange={onChangeHandler}
+          />
+          <p className="error">{formErrors.age}</p>
         </div>
         <div className="inputs-container">
           <label htmlFor="genre">Genre *</label>

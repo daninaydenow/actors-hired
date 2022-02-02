@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./PortfolioCard.css";
 
-const PortfolioCard = ({ profImgUrl, name, _id: actorId }) => {
+const PortfolioCard = ({ profImgUrl, name, _id: actorId, age }) => {
   return (
     <>
       <div className="card">
@@ -10,7 +10,7 @@ const PortfolioCard = ({ profImgUrl, name, _id: actorId }) => {
         </div>
         <div className="card-body">
           <h4>{name}</h4>
-          <p>26</p>
+          <p>{age}</p>
           <div className="card-button">
             <Link to={`/details/${actorId}`} className="a">
               <i className="fas fa-angle-double-right"></i> VIEW

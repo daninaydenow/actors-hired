@@ -176,7 +176,7 @@ const Details = () => {
             <div className="head-info">
               <h4 className="portfolio-name">{actor.name}</h4>
               <p>
-                <small>age:</small> 26
+                <small>age:</small> {actor.age}
               </p>
               <p>
                 <small>genre:</small> {actor.genre}

@@ -74,7 +74,7 @@ export const Profile = () => {
     <div className="profile-page">
       <header className="profile-header">
         <h1>Profile</h1>
-        <p>Daniel Naydenov</p>
+        <p>{currentUser.email}</p>
       </header>
       <div className="content-container">
         <div className="my-hirings">
