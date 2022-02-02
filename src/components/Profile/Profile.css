@@ -26,23 +26,21 @@
 }
 
 .my-hirings {
-  background-color: #3a3b3c;
-  width: 50%;
-  border-right: 1px solid black;
+  border-right: 1px solid white;
 }
 
 .my-portfolios {
-  background-color: #3a3b3c;
-  width: 50%;
-  border-left: 1px solid black;
+  border-left: 1px solid white;
 }
 
 .my-hirings,
 .my-portfolios {
+  width: 50%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #000000;
 }
 
 .profile-item {

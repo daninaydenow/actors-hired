@@ -55,13 +55,9 @@ const Edit = () => {
   };
 
   const loadButton = (
-    <button className="btn btn-warning mt-5" type="button" disabled>
-      <span
-        className="spinner-border spinner-border-sm"
-        role="status"
-        aria-hidden="true"
-      ></span>
-      Loading...
+    <button type="submit" className="btn">
+      <i class="far fa-edit"></i>
+      <span className="hide"> Loading ...</span>
     </button>
   );
 
@@ -157,10 +153,13 @@ const Edit = () => {
           />
         </div>
         <div className="edit-actions">
-          <button type="submit" className="btn">
-            <i class="far fa-edit"></i>
-            <span className="hide"> Edit</span>
-          </button>
+          {loading && loadButton}
+          {loading || (
+            <button type="submit" className="btn">
+              <i class="far fa-edit"></i>
+              <span className="hide"> Edit</span>
+            </button>
+          )}
         </div>
       </form>
     </>

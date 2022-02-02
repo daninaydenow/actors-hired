@@ -43,6 +43,11 @@ export const validate = (values) => {
     } else if (values.name.length < 6) {
       errors.name = "Name cannot be shorter than 6 characters!";
     }
+    if (!values.age) {
+      errors.age = "Age is required!";
+    } else if (values.age < 0) {
+      errors.name = "Age cannot be less than 0!";
+    }
     if (!values.genre) {
       errors.genre = "Genre is required!";
     }
