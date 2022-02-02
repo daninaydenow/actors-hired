@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 const ErrorFallback = () => {
   return (
-    <div>
-      <h3 className="text-light">OOPS ....</h3>
-      <p className="text-light">Something went wrong !</p>
-      <Link to="/" className="btn btn-success">
+    <div className="forms-wrapper">
+      <h3>OOPS ....</h3>
+      <p>Something went wrong !</p>
+      <Link to="/" className="btn">
         Try again
       </Link>
     </div>
